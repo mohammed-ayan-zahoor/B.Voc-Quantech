@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Load site configuration -->
+    <script src="config.js"></script>
+    <script>
+      // Function to update meta tags using config
+      function updateMetaTags() {
+        const config = window.siteConfig;
+        const pageName = "All India Council Programs"; // Specific name for this page
+
+        // Update title and primary meta tags
+        // Craft descriptive titles and descriptions using keywords
+        document.title = `${pageName} - Vocational & Paramedical Courses | ${config.orgName}`;
+        document.querySelector('meta[name="title"]').content = `${pageName} - All India Council for Vocational & Paramedical Science | ${config.orgName} Courses`;
+        document.querySelector('meta[name="description"]').content = `Explore the comprehensive vocational and paramedical science programs offered through AICVPS in partnership with ${config.orgName}. Find detailed course information and curriculum.`;
+        document.querySelector('meta[name="keywords"]').content = `AICVPS, All India Council for Vocational and Paramedical Science, vocational courses, paramedical courses, ${config.orgName} B.Voc, healthcare education, vocational training, paramedical training, India`;
+
+        // Update Open Graph tags (for social media sharing)
+        document.querySelector('meta[property="og:type"]').content = "website"; // Or "article" if the page is more like a blog post
+        document.querySelector('meta[property="og:url"]').content = `${config.websiteUrl}/aicvps.html`; // Use the specific page URL
+        document.querySelector('meta[property="og:title"]').content = `${pageName} - Vocational & Paramedical Courses | ${config.orgName}`;
+        document.querySelector('meta[property="og:description"]').content = `Explore vocational and paramedical science programs through AICVPS at ${config.orgName}. Detailed course info and curriculum available.`;
+        document.querySelector('meta[property="og:image"]').content = `${config.websiteUrl}${config.logoPath}`; // Use a relevant image, like your logo
+
+        // Update Twitter Card tags
+        document.querySelector('meta[property="twitter:card"]').content = "summary_large_image"; // Or "summary"
+        document.querySelector('meta[property="twitter:url"]').content = `${config.websiteUrl}/aicvps.html`;
+        document.querySelector('meta[property="twitter:title"]').content = `${pageName} - Vocational & Paramedical Courses | ${config.orgName}`;
+        document.querySelector('meta[property="twitter:description"]').content = `Explore vocational and paramedical science programs through AICVPS at ${config.orgName}. Detailed course info and curriculum available.`;
+        document.querySelector('meta[property="twitter:image"]').content = `${config.websiteUrl}${config.logoPath}`; // Use the same image as og:image
+
+        // Update theme color (for browser theme)
+        document.querySelector('meta[name="theme-color"]').content = config.seo.themeColor;
+        document.querySelector('meta[name="msapplication-TileColor"]').content = config.seo.themeColor;
+
+        // Add or Update Schema.org data (Structured Data)
+        // You can adapt the Schema.org markup from index.html or career-services.html
+        // A 'WebPage' or 'AboutPage' type might be suitable, or more specific types if appropriate.
+        // For simplicity, you could start with a basic WebPage schema.
+        const schemaScript = document.querySelector('script[type="application/ld+json"]`;
+        if (schemaScript) {
+             const schemaData = JSON.parse(schemaScript.textContent);
+             // Example: Update name and description if you have a Service or Organization schema here
+             // schemaData.name = `${pageName} Programs`;
+             // schemaData.description = document.querySelector('meta[name="description"]').content;
+             // Ensure provider/organization info is correct if applicable
+             if (schemaData.provider) {
+                 schemaData.provider.name = config.orgFullName;
+                 schemaData.provider.url = config.websiteUrl;
+             }
+             schemaScript.textContent = JSON.stringify(schemaData, null, 2);
+        } else {
+            // If no Schema.org script exists, you might add one
+            const newSchemaScript = document.createElement('script');
+            newSchemaScript.type = 'application/ld+json';
+            newSchemaScript.textContent = JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "WebPage", // Or a more specific type
+                "name": `${pageName} - Vocational & Paramedical Courses`,
+                "url": `${config.websiteUrl}/aicvps.html`,
+                "description": document.querySelector('meta[name="description"]').content,
+                "publisher": { // Add publisher info
+                    "@type": "EducationalOrganization",
+                    "name": config.orgFullName,
+                    "url": config.websiteUrl,
+                    "logo": {
+                       "@type": "ImageObject",
+                       "url": `${config.websiteUrl}${config.logoPath}`
+                    }
+                }
+            }, null, 2);
+            document.head.appendChild(newSchemaScript);
+        }
+      }
+
+      // Update meta tags when the page loads
+      document.addEventListener('DOMContentLoaded', updateMetaTags);
+    </script>
+
+    <!-- Placeholder Meta Tags (will be updated by script) -->
+    <title>AICVPS - Vocational & Paramedical Courses</title>
+    <meta name="title" content="Loading...">
+    <meta name="description" content="Loading...">
+    <meta name="keywords" content="Loading...">
+
+    <!-- Open Graph / Facebook (Placeholders) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:title" content="Loading...">
+    <meta property="og:description" content="Loading...">
+    <meta property="og:image" content="">
+
+    <!-- Twitter (Placeholders) -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="">
+    <meta property="twitter:title" content="Loading...">
+    <meta property="twitter:description" content="Loading...">
+    <meta property="twitter:image" content="">
+
+    <!-- Favicon (assuming these paths are correct) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#2563eb">
+
+    <!-- Theme Color (Placeholder) -->
+    <meta name="theme-color" content="#2563eb">
+    <meta name="msapplication-TileColor" content="#2563eb">
+
+    <!-- Fonts and Styles -->
+    <!-- Ensure all necessary fonts and CSS are linked -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/aicvps.css">
+    <!-- If you have a general styles.css, link it here -->
+    <!-- <link rel="stylesheet" href="styles/style.css"> -->
+
+    <!-- Optional: Initial Schema.org Markup (can be updated by the script) -->
+    <!-- <script type="application/ld+json">{}</script> -->
+
+</head>
+<body>
+    
+    <!-- Add loader at the start of body -->
+    <div class="loader-wrapper">
+      <div class="loader"></div>
+    </div>
+
+    <header class="fade-in zoom-in">
+        <div class="header-content">
+            <div class="header-text">
+                <h1>All India Council for Vocational & Paramedical Science</h1>
+                <p>AICVPS</p>
+            </div>
+        </div>
+    </header>
+    
+    <nav class="fade-in">
+        <div class="nav-container">
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
+            <div class="nav-links" role="navigation" aria-label="Main navigation">
+                <a href="index.html" role="menuitem">Home</a>
+                <a href="#aicvps-info" role="menuitem">About</a>
+                <a href="#courses" role="menuitem">Courses</a>
+            </div>
+        </div>
+    </nav>
+    
+    <main>
+        <!-- Hero or Banner Section for AICVPS -->
+        
+        
+        <!-- Information Section about AICVPS -->
+        <section id="aicvps-info">
+            <div class="container">
+                <h2 class="section-title">What is AICVPS?</h2>
+                <div class="row">
+                    <div class="aicvps-info-card">
+                        <h3>About AICVPS</h3>
+                        <p>
+                            The AICVPS With Its Central Office In Delhi Was Established Under Article 29 and 30 (1) of Constitution of India And Incorporated Under The Legislation of Government of India With an Aim To Minimize Shortfall In Trained and Qualified Paramedics.
+                        </p>
+                        
+                    </div>
+                    <div class="aicvps-info-card">
+                         <h3>Mission and Vision</h3>
+                         <p>
+                             We Promote Quality Education, Training and Research In Health and Medicine and Provide Affiliation to Institutes Registered With us. We Register Qualified College/University or Individuals For World-Class Training in Paramedical Science and Futuristic Practice.
+                         </p>
+                         
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+        <section class="section course-type-cards" id="courses">
+            <div class="container">
+                <h2>AICVPS Courses</h2>
+                <div class="course-cards-grid">
+                    <!-- Card for Vocational Programmes -->
+                    <div class="course-type-card" data-pdf-url="Pdf/BVOC Curriculum/02_VOCATIONAL PROGRAMMES.pdf">
+                        <div class="card-image vocational-img">
+                            <img src="IMG/VocationalP.jpg" alt="Vocational Programmes">
+                        </div>
+                        <div class="card-content">
+                            <h3>Vocational Programmes</h3>
+                            <p>Practical skills and knowledge for specific trades and industries.</p> <!-- Shortened description -->
+                            <button class="preview-btn">Preview PDF</button>
+                        </div>
+                    </div>
+                    <!-- Card for Paramedical Programmes -->
+                    <div class="course-type-card" data-pdf-url="Pdf\BVOC Curriculum\01_PARAMEDICAL PROGRAMMES.pdf">
+                        <div class="card-image paramedical-img">
+                            <img src="IMG/paramedicalImage.png" alt="Paramedical Programmes">
+                        </div>
+                        <div class="card-content">
+                            <h3>Paramedical Programmes</h3>
+                            <p>Healthcare professionals assisting doctors and nurses.</p> <!-- Shortened description -->
+                            <button class="preview-btn">Preview PDF</button>
+                        </div>
+                    </div>
+                    <!-- Card for NTT Programmes -->
+                    <div class="course-type-card" data-pdf-url="Pdf\\BVOC Curriculum\\05_NTT PROGRAMMES.pdf">
+                        <div class="card-image ntt-img">
+                            <img src="IMG/NTT_IMG.jpg" alt="NTT Programmes">
+                        </div>
+                        <div class="card-content">
+                            <h3>NTT Programmes</h3>
+                            <p>Training to become nursery teachers focusing on early childhood education.</p> <!-- Shortened description -->
+                            <button class="preview-btn">Preview PDF</button>
+                        </div>
+                    </div>
+                    <!-- New card for Fire and Safety Programmes -->
+                    <div class="course-type-card" data-pdf-url="Pdf\BVOC Curriculum\04_FIRE SAFETY PROGRAMMES.pdf">
+                        <div class="card-image fire-safety-img">
+                            <img src="IMG/Fire and safety.jpg" alt="Fire and Safety Programmes">
+                        </div>
+                        <div class="card-content">
+                            <h3>Fire and Safety Programmes</h3>
+                            <p>Training in fire prevention, safety protocols, and emergency response.</p> <!-- Shortened description -->
+                            <button class="preview-btn">Preview PDF</button>
+                        </div>
+                    </div>
+                    <!-- New card for IT Programmes -->
+                    <div class="course-type-card" data-pdf-url="Pdf\BVOC Curriculum\06_IT PROGRAMMES.pdf"> <!-- Placeholder PDF path -->
+                        <div class="card-image it-img">
+                            <img src="IMG/IT Programmes.jpg" alt="IT Programmes"> <!-- Placeholder image source -->
+                        </div>
+                        <div class="card-content">
+                            <h3>IT Programmes</h3>
+                            <p>Covers software development, networking, and data management.</p> <!-- Shortened description -->
+                            <button class="preview-btn">Preview PDF</button>
+                        </div>
+                    </div>
+                    <!-- New card for Beauty and Wellness Programmes -->
+                    <div class="course-type-card" data-pdf-url="Pdf\BVOC Curriculum\07_BEAUTY&WELLNESS PROGRAMMES.pdf"> <!-- Placeholder PDF path -->
+                        <div class="card-image beauty-wellness-img">
+                            <img src="IMG/Beauty & Wellness.jpg" alt="Beauty and Wellness Programmes"> <!-- Placeholder image source -->
+                        </div>
+                        <div class="card-content">
+                            <h3>Beauty and Wellness Programmes</h3>
+                            <p>Study beauty therapies, wellness practices, and salon management.</p> <!-- Shortened description -->
+                            <button class="preview-btn">Preview PDF</button>
+                        </div>
+                    </div>
+                     <!-- New card for Apparel Programmes -->
+                    <div class="course-type-card" data-pdf-url="Pdf\BVOC Curriculum\08_APPAREL PROGRAMMES.pdf"> <!-- Placeholder PDF path -->
+                        <div class="card-image apparel-img">
+                            <img src="IMG/Apparel.jpg" alt="Apparel Programmes"> <!-- Placeholder image source -->
+                        </div>
+                        <div class="card-content">
+                            <h3>Apparel Programmes</h3>
+                            <p>Focuses on fashion design, textile technology, and garment manufacturing.</p> <!-- Short description -->
+                            <button class="preview-btn">Preview PDF</button>
+                        </div>
+                    </div>
+                    <!-- New card for Agriculture Programmes -->
+                    <div class="course-type-card" data-pdf-url="Pdf\BVOC Curriculum\09_AGRICULTURE PROGRAMMES.pdf"> <!-- Placeholder PDF path -->
+                        <div class="card-image agriculture-img">
+                            <img src="IMG/Agriculture Programmes.jpg" alt="Agriculture Programmes"> <!-- Placeholder image source -->
+                        </div>
+                        <div class="card-content">
+                            <h3>Agriculture Programmes</h3>
+                            <p>Study modern farming techniques, crop management, and agricultural science.</p> <!-- Shortened description -->
+                            <button class="preview-btn">Preview PDF</button>
+                        </div>
+                    </div>
+                    <!-- New card for Veterinary Programmes -->
+                    <div class="course-type-card" data-pdf-url="Pdf\BVOC Curriculum\10_VETERINARY PROGRAMMES.pdf"> <!-- Placeholder PDF path -->
+                        <div class="card-image veterinary-img">
+                            <img src="IMG/Veternary Programmes.jpg" alt="Veterinary Programmes"> <!-- Placeholder image source -->
+                        </div>
+                        <div class="card-content">
+                            <h3>Veterinary Programmes</h3>
+                            <p>Study animal health, disease prevention, and treatment.</p> <!-- Short description -->
+                            <button class="preview-btn">Preview PDF</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Add this modal for PDF preview -->
+        <div id="pdf-preview-modal" class="modal">
+            <!-- Moved close button outside modal-content -->
+            <span class="close-modal">&times;</span>
+            <div class="modal-content">
+                <iframe id="pdf-viewer" src="" frameborder="0"></iframe>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ==================================== -->
+    <!-- Insert your existing FOOTER code here-->
+    <!-- e.g., <footer>...</footer>          -->
+    <!-- ==================================== -->
+    <footer>
+        <!-- Content from your existing footer -->
+    </footer>
+    
+    <!-- Include any necessary JavaScript files -->
+    <!-- You might need Bootstrap JS if using Bootstrap components like Accordion -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
+    <!-- Include your existing script.js or main JavaScript file -->
+    <!-- <script src="script.js"></script> -->
+    
+    <script>
+        // JavaScript for mobile navigation toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            const navLinksList = document.querySelectorAll('.nav-links a'); // Get all nav links
+
+            if (navToggle && navLinks) {
+                // Toggle menu on button click
+                navToggle.addEventListener('click', function() {
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    this.setAttribute('aria-expanded', !isExpanded);
+                    navLinks.classList.toggle('active');
+                });
+
+                // Close menu when a link is clicked (for single-page navigation or user convenience)
+                navLinksList.forEach(link => {
+                    link.addEventListener('click', function() {
+                        // Check if the link is an internal link (starts with #)
+                        if (link.getAttribute('href').startsWith('#')) {
+                            // Smooth scroll to the section
+                            const targetId = link.getAttribute('href').substring(1); // Get the section ID
+                            const targetElement = document.getElementById(targetId);
+
+                            if (targetElement) {
+                                event.preventDefault(); // Prevent default jump
+                                targetElement.scrollIntoView({
+                                    behavior: 'smooth'
+                                });
+                            }
+
+                            // Close mobile menu after clicking an internal link
+                            navToggle.setAttribute('aria-expanded', 'false');
+                            navLinks.classList.remove('active');
+                        }
+                         // For external links (like Home), the default behavior is fine and will navigate away
+                    });
+                });
+
+                // Optional: Close menu if clicked outside (basic implementation)
+                // Might need refinement depending on specific layout
+                document.addEventListener('click', function(event) {
+                    const isClickInsideNav = navLinks.contains(event.target) || navToggle.contains(event.target);
+                    if (!isClickInsideNav && navLinks.classList.contains('active')) {
+                        navToggle.setAttribute('aria-expanded', 'false');
+                        navLinks.classList.remove('active');
+                    }
+                });
+            }
+        });
+        
+        // JavaScript for Course and Category Toggles
+        document.addEventListener('DOMContentLoaded', function() {
+            // Toggle function for categories and courses
+            function setupToggle(headerSelector, contentSelector, iconSelector) {
+                const headers = document.querySelectorAll(headerSelector);
+                
+                headers.forEach(header => {
+                    header.addEventListener('click', function() {
+                        const content = this.nextElementSibling; // The content div is the next sibling
+                        const icon = this.querySelector(iconSelector); // The icon within the header
+
+                        if (content && icon) {
+                            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+
+                            // Toggle the active class for CSS transitions
+                            content.classList.toggle('active');
+                            this.classList.toggle('active'); // Also add active class to header for icon rotation
+                            
+                            // Update ARIA attributes for accessibility
+                            this.setAttribute('aria-expanded', !isExpanded);
+                            content.setAttribute('aria-hidden', isExpanded);
+                            
+                            // Icon rotation is handled by CSS based on the 'active' class on the header
+                        }
+                    });
+                    
+                    // Handle keyboard interaction for accessibility (Enter and Space keys)
+                    header.addEventListener('keydown', function(event) {
+                        if (event.key === 'Enter' || event.key === ' ') {
+                            event.preventDefault(); // Prevent default spacebar behavior (scrolling)
+                            this.click(); // Trigger the click event
+                        }
+                    });
+                });
+            }
+
+            // Setup toggle for categories
+            setupToggle('.category-header', '.category-content', '.icon i');
+
+            // Setup toggle for individual course items
+            setupToggle('.course-item .course-header', '.course-details', '.toggle-icon i');
+        });
+
+        // JavaScript for Course Finder - Add this to your aicvps.html, before </body>
+        // You can add this inside your existing <script> tags or in a new block
+            
+            document.addEventListener('DOMContentLoaded', function() {
+                const programInput = document.getElementById('program-select');
+                const courseTypeInput = document.getElementById('course-type-select');
+            const courseInput = document.getElementById('course-select');
+            const goButton = document.getElementById('go-button');
+            
+            const programSuggestions = document.getElementById('program-suggestions');
+            const courseTypeSuggestions = document.getElementById('course-type-suggestions');
+            const courseSuggestions = document.getElementById('course-suggestions');
+            
+            let allCoursesData = []; // To store data fetched from JSON
+            let selectedProgram = null;
+            let selectedCourseType = null;
+            let selectedCourse = null; // To store the selected course object
+            
+            // Function to load course data from JSON
+            function loadCourseData() {
+                // !! IMPORTANT: Ensure this path to your aicvps.json file is correct !!
+                // If aicvps.json is in the same folder as aicvps.html, use 'aicvps.json'
+                // If it's in a subfolder like 'data', use 'data/aicvps.json'
+                fetch('aicvps.json') // <--- CHECK THIS PATH
+                .then(response => {
+                        if (!response.ok) {
+                            // If the response is not OK (e.g., 404 Not Found, 500 Server Error)
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        return response.json(); // Parse the JSON from the response
+                    })
+                    .then(data => {
+                        // This block runs if the fetch and JSON parsing were successful
+                        allCoursesData = data; // Store the fetched data
+                        console.log('Course data loaded successfully:', allCoursesData);
+                        populateProgramsDropdown(allCoursesData); // Populate the first dropdown
+
+                        // Hide the "Error loading courses." message if it was shown previously
+                        if(programSuggestions.querySelector('li')?.textContent === 'Error loading courses.') {
+                            programSuggestions.innerHTML = '<ul></ul>'; // Clear the error message
+                             programSuggestions.style.display = 'none';
+                            }
+
+                    })
+                    .catch(error => {
+                        // This block runs if there was a network error or JSON parsing error
+                        console.error('Error loading or parsing course data:', error);
+                        // Display an error message to the user
+                        if(programSuggestions.querySelector('ul')) {
+                            programSuggestions.querySelector('ul').innerHTML = '<li>Error loading courses. Please check the data file and path.</li>';
+                           programSuggestions.style.display = 'block';
+                        } else {
+                            programSuggestions.innerHTML = '<ul><li>Error loading courses. Please check the data file and path.</li></ul>';
+                            programSuggestions.style.display = 'block';
+                        }
+                    });
+            }
+            
+            // Function to populate a suggestions list
+            function populateSuggestions(items, suggestionsContainer, textKey, itemType) {
+                suggestionsContainer.innerHTML = ''; // Clear previous suggestions
+                const ul = document.createElement('ul');
+                if (!items || items.length === 0) {
+                    // Only show "No ... available" if there are no items to begin with
+                    // This message shouldn't replace filtered results
+                    // ul.innerHTML = `<li>No ${itemType}s available.</li>`;
+                    suggestionsContainer.style.display = 'none'; // Hide if no items to show
+                    return; // Exit the function
+                }
+
+                items.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item[textKey];
+                    // Store item data for easy access on click
+                    li.dataset.itemId = item.id;
+                    if (itemType === 'course') {
+                        li.dataset.description = item.description; // Store description for courses
+                    }
+                    
+                    li.addEventListener('click', function() {
+                        // Find the full item object from the original data based on its ID
+                        let selectedItem;
+                        if (itemType === 'program') {
+                             selectedItem = allCoursesData.find(p => p.id === this.dataset.itemId);
+                             if (selectedItem) selectProgram(selectedItem);
+                        } else if (itemType === 'courseType') {
+                            selectedItem = selectedProgram?.courseTypes.find(t => t.id === this.dataset.itemId);
+                              if (selectedItem) selectCourseType(selectedItem);
+                        } else if (itemType === 'course') {
+                            selectedItem = selectedCourseType?.courses.find(c => c.id === this.dataset.itemId);
+                              if (selectedItem) selectCourse(selectedItem);
+                            }
+                    });
+                    ul.appendChild(li);
+                });
+                suggestionsContainer.appendChild(ul);
+                suggestionsContainer.style.display = 'block'; // Show the suggestions list
+            }
+            
+            // Populate specific dropdowns using the generic function
+            function populateProgramsDropdown(data) {
+                // Ensure we have data before trying to populate
+                if (data && data.length > 0) {
+                   populateSuggestions(data, programSuggestions, 'program', 'program');
+                } else {
+                    // Display 'No programs available' if data is empty
+                    programSuggestions.innerHTML = '<ul><li>No programs available.</li></ul>';
+                    programSuggestions.style.display = 'block';
+                }
+            }
+            
+            function populateCourseTypesDropdown(courseTypes) {
+                populateSuggestions(courseTypes, courseTypeSuggestions, 'type', 'course type');
+            }
+
+            function populateCoursesDropdown(courses) {
+                populateSuggestions(courses, courseSuggestions, 'title', 'course');
+            }
+
+            
+            // Function to handle Program selection
+            function selectProgram(program) {
+                selectedProgram = program;
+                programInput.value = program.program; // Set input value
+                programSuggestions.style.display = 'none'; // Hide suggestions
+                
+                // Reset and enable next dropdown
+                selectedCourseType = null;
+                selectedCourse = null;
+                courseTypeInput.value = '';
+                courseInput.value = '';
+                courseTypeInput.disabled = false; // Enable Course Type dropdown
+                courseInput.disabled = true; // Keep Course disabled
+                goButton.disabled = true; // Keep Go button disabled
+                courseTypeSuggestions.style.display = 'none';
+                courseSuggestions.style.display = 'none';
+                
+                populateCourseTypesDropdown(program.courseTypes); // Populate Course Type dropdown
+            }
+            
+             // Function to handle Course Type selection
+             function selectCourseType(type) {
+                 selectedCourseType = type;
+                 courseTypeInput.value = type.type;
+                 courseTypeSuggestions.style.display = 'none';
+                 
+                 // Reset and enable next dropdown
+                 selectedCourse = null;
+                 courseInput.value = '';
+                 courseInput.disabled = false; // Enable Course dropdown
+                 goButton.disabled = true; // Keep Go button disabled
+                 courseSuggestions.style.display = 'none';
+                 
+                populateCoursesDropdown(type.courses); // Populate Courses dropdown
+            }
+
+            // Function to handle Course selection
+            function selectCourse(course) {
+                selectedCourse = course;
+                courseInput.value = course.title;
+                courseSuggestions.style.display = 'none';
+                
+                // Enable Go button
+                goButton.disabled = false;
+            }
+            
+            
+            // --- Event Listeners for Input Fields ---
+            
+            // Hide suggestions when clicking outside the form group
+            document.addEventListener('click', function(event) {
+                // Check if the click was outside any of the form groups
+                const isClickInsideForm = programInput.parentElement.contains(event.target) ||
+                courseTypeInput.parentElement.contains(event.target) ||
+                courseInput.parentElement.contains(event.target);
+                
+                if (!isClickInsideForm) {
+                    programSuggestions.style.display = 'none';
+                    courseTypeSuggestions.style.display = 'none';
+                     courseSuggestions.style.display = 'none';
+                    }
+                });
+                
+                
+                // Generic input listener for filtering and showing suggestions
+                function setupInputListeners(inputElement, suggestionsContainer, dataGetter, textKey, nextInputElement, itemType) {
+                    inputElement.addEventListener('input', function() {
+                    const filterText = inputElement.value.toLowerCase();
+                    const itemsToFilter = dataGetter(); // Get the relevant data based on current state
+                    
+                    const filteredItems = itemsToFilter.filter(item =>
+                    item[textKey].toLowerCase().includes(filterText)
+                );
+                    populateSuggestions(filteredItems, suggestionsContainer, textKey, itemType);
+                    
+                    // Reset subsequent fields and state on input
+                    if (nextInputElement) {
+                        nextInputElement.value = '';
+                        nextInputElement.disabled = true;
+                          if (nextInputElement === courseTypeInput) {
+                              selectedProgram = null;
+                              courseTypeSuggestions.style.display = 'none';
+                            } else if (nextInputElement === courseInput) {
+                                selectedCourseType = null;
+                               courseSuggestions.style.display = 'none';
+                            }
+                     }
+                     if (suggestionsContainer === courseSuggestions) { // If filtering courses
+                         selectedCourse = null;
+                         goButton.disabled = true;
+                        }
+                     suggestionsContainer.style.display = 'block'; // Show suggestions on input
+                     
+                     // Hide if input is cleared and no selection was made
+                     if (filterText === '') {
+                         suggestionsContainer.style.display = 'none';
+                        }
+                    });
+
+                inputElement.addEventListener('focus', function() {
+                    const itemsToShow = dataGetter(); // Get the relevant data based on current state
+                    populateSuggestions(itemsToShow, suggestionsContainer, textKey, itemType);
+                    suggestionsContainer.style.display = 'block';
+                });
+
+                // Hide suggestions when blurring unless a suggestion is clicked
+                 inputElement.addEventListener('blur', function(event) {
+                     // Use a timeout to allow click on suggestion to register before hiding
+                     setTimeout(() => {
+                         // Check if the focus is still within the input or its suggestions container
+                         const isFocusWithinContainer = inputElement.parentElement.contains(document.activeElement);
+                         if (!isFocusWithinContainer) {
+                             suggestionsContainer.style.display = 'none';
+                            }
+                     }, 100); // Short delay
+                    });
+            }
+
+            
+            // Setup listeners for each input field using data getters
+            setupInputListeners(programInput, programSuggestions, () => allCoursesData, 'program', courseTypeInput, 'program');
+            setupInputListeners(courseTypeInput, courseTypeSuggestions, () => selectedProgram ? selectedProgram.courseTypes : [], 'type', courseInput, 'course type');
+            setupInputListeners(courseInput, courseSuggestions, () => selectedCourseType ? selectedCourseType.courses : [], 'title', null, 'course');
+            
+
+            // --- Go Button Functionality ---
+            goButton.addEventListener('click', function() {
+                if (selectedCourse) {
+                    // Define what happens when the Go button is clicked
+                    // Example: Log the selected course to the console
+                    console.log('Go button clicked. Selected Course:', selectedCourse);
+                    
+                    // Example: Redirect to a course details page (if you had one)
+                    // window.location.href = `course-details.html?courseId=${selectedCourse.id}`;
+                    
+                    // Example: Display course description on the page (Requires a div with id="course-details-display" in your HTML)
+                    const courseDetailsDisplayArea = document.getElementById('course-details-display');
+                    if (courseDetailsDisplayArea) {
+                         courseDetailsDisplayArea.innerHTML = `<h3>${selectedCourse.title}</h3><p>${selectedCourse.description}</p>`;
+                     } else {
+                         // Fallback: display in an alert if no display area is found
+                         alert(`Selected Course: ${selectedCourse.title}\nDescription: ${selectedCourse.description}`);
+                        }
+
+                    } else {
+                    // This case should ideally not be reachable if the button is disabled correctly
+                    alert('Please select a program, course type, and course.');
+                }
+            });
+
+            
+            // Load the course data when the page finishes loading
+            loadCourseData();
+        });
+        
+        //script for cards 
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('pdf-preview-modal');
+    const pdfViewer = document.getElementById('pdf-viewer');
+    const closeModal = document.querySelector('.close-modal');
+    const courseCards = document.querySelectorAll('.course-type-card');
+    
+    // Function to open modal with PDF
+    function openPdfPreview(pdfUrl) {
+        pdfViewer.src = pdfUrl;
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+    
+    // Add click event to each card
+    courseCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const pdfUrl = this.dataset.pdfUrl;
+            if (pdfUrl) {
+                openPdfPreview(pdfUrl);
+            }
+        });
+    });
+    
+    // Close modal when clicking the close button
+    closeModal.addEventListener('click', function() {
+        modal.style.display = 'none';
+        pdfViewer.src = ''; // Clear the PDF viewer
+        document.body.style.overflow = ''; // Restore scrolling
+    });
+
+    // Close modal when clicking outside the content
+    modal.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            closePdfPreview();
+        }
+    });
+    
+    // Close modal when pressing Escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && modal.style.display === 'block') {
+            closePdfPreview();
+        }
+    });
+
+    // Loader Animation
+    const loaderWrapper = document.querySelector('.loader-wrapper');
+    setTimeout(() => {
+      loaderWrapper.classList.add('fade-out');
+      setTimeout(() => {
+        loaderWrapper.style.display = 'none';
+      }, 1000);
+    }, 2500);
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Prevent scrolling until content is loaded and loader is gone
+  // This should run early in DOMContentLoaded
+  document.body.style.overflow = 'hidden';
+  document.body.style.position = 'fixed'; // Lock body position
+  document.body.style.width = '100%';
+  document.body.style.top = '0'; // Pin to top
+
+  // Force scroll position to top immediately (may help before content is fully rendered)
+  window.scrollTo(0, 0);
+
+  // Rest of your existing DOMContentLoaded script can go here
+  // ... (e.g., event listeners, initializations, etc.)
+});
+
+// Use the 'load' event to ensure all resources are ready before hiding the loader
+window.addEventListener('load', function() {
+  const loaderWrapper = document.querySelector('.loader-wrapper');
+
+  // Check if the loader exists before trying to animate
+  if (loaderWrapper) {
+    // Set a delay before starting the fade-out animation
+    // This timeout controls how long the loader is visible BEFORE fading starts
+    const minDisplayTime = 2000; // Minimum time in milliseconds the loader is displayed after load
+    const fadeOutDuration = 1000; // Duration of the fade-out transition in milliseconds (matches CSS)
+
+    // Start the fade-out after the minimum display time has passed
+    setTimeout(() => {
+      loaderWrapper.classList.add('fade-out');
+
+      // Wait for the fade-out transition to complete
+      setTimeout(() => {
+        loaderWrapper.style.display = 'none';
+
+        // Reset body styles to enable scrolling
+        document.body.style.position = '';
+        document.body.style.width = '';
+        document.body.style.top = '';
+        document.body.style.overflow = '';
+
+        // Force scroll to top one final time with auto behavior
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: 'auto' // Use 'auto' for an instant jump to the top
+        });
+
+      }, fadeOutDuration); // This timeout waits for the CSS fade-out to finish
+
+    }, minDisplayTime); // This timeout makes the loader visible for 'minDisplayTime' after 'load'
+  }
+});
+</script>
+
+</body>
+</html>

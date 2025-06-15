@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!-- Load site configuration -->
+  <script src="config.js"></script>
+  <script>
+    // Function to update meta tags using config
+    function updateMetaTags() {
+      const config = window.siteConfig;
+      const pageName = "Student Portal";
+      
+      // Update title and meta tags
+      document.title = `${pageName} | ${config.orgName} B.Voc Programs`;
+      document.querySelector('meta[name="title"]').content = `${pageName} | ${config.orgName} B.Voc Programs`;
+      document.querySelector('meta[name="description"]').content = `Access ${config.orgName}'s student portal for course materials, assignments, grades, and academic resources. Manage your B.Voc program journey efficiently.`;
+      document.querySelector('meta[name="keywords"]').content = `student portal, B.Voc resources, course materials, ${config.orgName} portal, academic resources`;
+      
+      // Update Open Graph tags
+      document.querySelector('meta[property="og:url"]').content = `${config.websiteUrl}/student-portal.html`;
+      document.querySelector('meta[property="og:title"]').content = `${pageName} | ${config.orgName}`;
+      document.querySelector('meta[property="og:description"]').content = `Access ${config.orgName}'s student portal for course materials, assignments, and academic resources.`;
+      document.querySelector('meta[property="og:image"]').content = `${config.websiteUrl}${config.logoPath}`;
+      
+      // Update Twitter Card tags
+      document.querySelector('meta[property="twitter:url"]').content = `${config.websiteUrl}/student-portal.html`;
+      document.querySelector('meta[property="twitter:title"]').content = `${pageName} | ${config.orgName}`;
+      document.querySelector('meta[property="twitter:description"]').content = `Access ${config.orgName}'s student portal for course materials, assignments, and academic resources.`;
+      document.querySelector('meta[property="twitter:image"]').content = `${config.websiteUrl}${config.logoPath}`;
+      
+      // Update theme color
+      document.querySelector('meta[name="theme-color"]').content = config.seo.themeColor;
+      document.querySelector('meta[name="msapplication-TileColor"]').content = config.seo.themeColor;
+      
+      // Update Schema.org data
+      const schemaScript = document.querySelector('script[type="application/ld+json"]');
+      const schemaData = JSON.parse(schemaScript.textContent);
+      schemaData.name = `${config.orgName} Student Portal`;
+      schemaData.provider.name = config.orgFullName;
+      schemaData.provider.url = config.websiteUrl;
+      schemaScript.textContent = JSON.stringify(schemaData, null, 2);
+    }
+    
+    // Update meta tags when the page loads
+    document.addEventListener('DOMContentLoaded', updateMetaTags);
+  </script>
+  
+  <!-- Primary Meta Tags -->
+  <title>Loading...</title>
+  <meta name="title" content="Loading...">
+  <meta name="description" content="Loading...">
+  <meta name="keywords" content="Loading...">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="">
+  <meta property="og:title" content="Loading...">
+  <meta property="og:description" content="Loading...">
+  <meta property="og:image" content="">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="">
+  <meta property="twitter:title" content="Loading...">
+  <meta property="twitter:description" content="Loading...">
+  <meta property="twitter:image" content="">
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/favicon/site.webmanifest">
+  <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#2563eb">
+  
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  
+  <!-- Fonts and Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="styles/student-portal.css">
+
+  <!-- Schema.org markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Loading...",
+    "applicationCategory": "EducationalApplication",
+    "offers": {
+      "@type": "Offer",
+      "availability": "https://schema.org/OnlineOnly"
+    },
+    "provider": {
+      "@type": "EducationalOrganization",
+      "name": "Loading...",
+      "url": ""
+    },
+    "audience": {
+      "@type": "EducationalAudience",
+      "educationalRole": "student"
+    }
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Student Portal</h1>
+    <p>Access your academic resources and information</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="#login">Login</a>
+    <a href="#features">Features</a>
+    <a href="#help">Help</a>
+  </nav>
+
+  <div class="container">
+    <section class="login-section" id="login">
+      <h2>Student Login</h2>
+      <form id="loginForm" class="login-form">
+        <div class="form-group">
+          <label for="studentId">Student ID</label>
+          <input type="text" id="studentId" name="studentId" required placeholder="Enter your student ID" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required placeholder="Enter your password" class="form-control">
+        </div>
+        <button type="submit" class="login-button">Login</button>
+        <a href="#" class="forgot-password">Forgot Password?</a>
+      </form>
+    </section>
+
+    <section class="portal-features" id="features">
+      <div class="feature-card">
+        <i class="fas fa-book"></i>
+        <h3>Course Materials</h3>
+        <p>Access lecture notes, assignments, and study resources for all your courses.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-chart-line"></i>
+        <h3>Academic Progress</h3>
+        <p>Track your grades, attendance, and overall academic performance.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-calendar-alt"></i>
+        <h3>Class Schedule</h3>
+        <p>View your timetable, exam schedules, and important academic dates.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-comments"></i>
+        <h3>Communication</h3>
+        <p>Interact with faculty and classmates through discussion forums and messaging.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-file-alt"></i>
+        <h3>Assignments</h3>
+        <p>Submit assignments online and receive feedback from instructors.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-clipboard-list"></i>
+        <h3>Results</h3>
+        <p>Access your semester results and download grade cards.</p>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize intersection observer for animations
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '50px'
+      });
+
+      // Observe elements for animation
+      document.querySelectorAll('.login-form').forEach(element => {
+        observer.observe(element);
+      });
+
+      // Add gradient text effect to headings
+      document.querySelectorAll('h1, h2').forEach(heading => {
+        heading.classList.add('gradient-text');
+      });
+
+      // Add floating effect to icons
+      document.querySelectorAll('.form-icon').forEach(icon => {
+        icon.style.animation = 'float 3s ease-in-out infinite';
+      });
+
+      // Add input focus effects
+      document.querySelectorAll('.form-control input').forEach(input => {
+        input.addEventListener('focus', function() {
+          this.parentElement.style.transform = 'translateY(-5px)';
+          this.parentElement.style.transition = 'transform 0.3s ease';
+        });
+
+        input.addEventListener('blur', function() {
+          this.parentElement.style.transform = 'translateY(0)';
+        });
+      });
+    });
+
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Add login functionality here
+      alert('Login functionality will be implemented soon.');
+    });
+  </script>
+</body>
+</html> 

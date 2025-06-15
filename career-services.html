@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!-- Load site configuration -->
+  <script src="config.js"></script>
+  <script>
+    // Function to update meta tags using config
+    function updateMetaTags() {
+      const config = window.siteConfig;
+      const pageName = "Career Services";
+      
+      // Update title and meta tags
+      document.title = `${pageName} | ${config.orgName} B.Voc Programs`;
+      document.querySelector('meta[name="title"]').content = `${pageName} | Placement & Career Support | ${config.orgName}`;
+      document.querySelector('meta[name="description"]').content = `Comprehensive career services at ${config.orgName} including placement assistance, industry training, internships, and career counseling for B.Voc students.`;
+      document.querySelector('meta[name="keywords"]').content = `career services, placement assistance, internships, career counseling, B.Voc careers, ${config.orgName} placements`;
+      
+      // Update Open Graph tags
+      document.querySelector('meta[property="og:url"]').content = `${config.websiteUrl}/career-services.html`;
+      document.querySelector('meta[property="og:title"]').content = `${pageName} | ${config.orgName}`;
+      document.querySelector('meta[property="og:description"]').content = `Comprehensive career services including placement assistance, industry training, and career counseling for B.Voc students.`;
+      document.querySelector('meta[property="og:image"]').content = `${config.websiteUrl}${config.logoPath}`;
+      
+      // Update Twitter Card tags
+      document.querySelector('meta[property="twitter:url"]').content = `${config.websiteUrl}/career-services.html`;
+      document.querySelector('meta[property="twitter:title"]').content = `${pageName} | ${config.orgName}`;
+      document.querySelector('meta[property="twitter:description"]').content = `Comprehensive career services including placement assistance, industry training, and career counseling for B.Voc students.`;
+      document.querySelector('meta[property="twitter:image"]').content = `${config.websiteUrl}${config.logoPath}`;
+      
+      // Update theme color
+      document.querySelector('meta[name="theme-color"]').content = config.seo.themeColor;
+      document.querySelector('meta[name="msapplication-TileColor"]').content = config.seo.themeColor;
+      
+      // Update Schema.org data
+      const schemaScript = document.querySelector('script[type="application/ld+json"]');
+      const schemaData = JSON.parse(schemaScript.textContent);
+      schemaData.provider.name = config.orgFullName;
+      schemaData.provider.url = config.websiteUrl;
+      schemaScript.textContent = JSON.stringify(schemaData, null, 2);
+
+      // Update contact information
+      document.addEventListener('DOMContentLoaded', () => {
+        const emailElement = document.querySelector('.fas.fa-envelope').parentElement;
+        if (emailElement) {
+          emailElement.innerHTML = `<i class="fas fa-envelope"></i> ${config.email}`;
+        }
+      });
+    }
+    
+    // Update meta tags when the page loads
+    document.addEventListener('DOMContentLoaded', updateMetaTags);
+  </script>
+  
+  <!-- Primary Meta Tags -->
+  <title>Loading...</title>
+  <meta name="title" content="Loading...">
+  <meta name="description" content="Loading...">
+  <meta name="keywords" content="Loading...">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="">
+  <meta property="og:title" content="Loading...">
+  <meta property="og:description" content="Loading...">
+  <meta property="og:image" content="">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="">
+  <meta property="twitter:title" content="Loading...">
+  <meta property="twitter:description" content="Loading...">
+  <meta property="twitter:image" content="">
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/favicon/site.webmanifest">
+  <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#2563eb">
+  
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  
+  <!-- Fonts and Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="styles/career-services.css">
+
+  <!-- Schema.org markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Career Services",
+    "provider": {
+      "@type": "EducationalOrganization",
+      "name": "Loading...",
+      "url": ""
+    },
+    "serviceType": "Career Services",
+    "description": "Comprehensive career services including placement assistance, industry training, internships, and career counseling for B.Voc students",
+    "offers": {
+      "@type": "Offer",
+      "availability": "https://schema.org/InStock"
+    },
+    "areaServed": {
+      "@type": "State",
+      "name": "Maharashtra"
+    }
+  }
+  </script>
+  <style>
+
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Loader Animation
+      const loaderWrapper = document.querySelector('.loader-wrapper');
+      setTimeout(() => {
+        loaderWrapper.classList.add('fade-out');
+        setTimeout(() => {
+          loaderWrapper.style.display = 'none';
+        }, 1000);
+      }, 2500);
+
+      // Animation observer
+      const animateElements = document.querySelectorAll('.section, .service-card, .job-listing, .company-logo, .success-story');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Add small delay before starting animation
+            setTimeout(() => {
+              entry.target.classList.add('visible');
+            }, 100);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.2,
+        rootMargin: '50px'
+      });
+
+      // Observe all animated elements
+      animateElements.forEach(element => {
+        observer.observe(element);
+      });
+
+      // Set animation order for staggered elements
+      ['service-card', 'job-listing', 'company-logo'].forEach(className => {
+        document.querySelectorAll('.' + className).forEach((item, index) => {
+          item.style.setProperty('--animation-order', index + 1);
+        });
+      });
+
+      // Add gradient text effect to headings
+      document.querySelectorAll('h1, h2').forEach(heading => {
+        heading.classList.add('gradient-text');
+      });
+
+      // Add number counting animation for statistics
+      function animateValue(element, start, end, duration) {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+          if (!startTimestamp) startTimestamp = timestamp;
+          const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+          element.innerHTML = Math.floor(progress * (end - start) + start);
+          if (progress < 1) {
+            window.requestAnimationFrame(step);
+          }
+        };
+        window.requestAnimationFrame(step);
+      }
+
+      // Animate statistics when they come into view
+      const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const statNumber = entry.target.querySelector('.stat-number');
+            if (statNumber) {
+              const endValue = parseInt(statNumber.getAttribute('data-value'));
+              animateValue(statNumber, 0, endValue, 2000);
+            }
+            statsObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      document.querySelectorAll('.stats-card').forEach(stat => {
+        statsObserver.observe(stat);
+      });
+
+      // Mobile Navigation Toggle
+      const navToggle = document.querySelector('.nav-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      
+      navToggle.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+        const isExpanded = navLinks.classList.contains('active');
+        navToggle.setAttribute('aria-expanded', isExpanded);
+      });
+
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', function(event) {
+        const isClickInsideNav = navToggle.contains(event.target) || navLinks.contains(event.target);
+        if (!isClickInsideNav && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          navToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Close mobile menu when clicking a link
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+          navToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <!-- Add loader at the start of body -->
+  <div class="loader-wrapper">
+    <div class="loader"></div>
+  </div>
+  <header>
+    <h1>Career Services</h1>
+    <p>Empowering Students for Professional Success</p>
+  </header>
+
+  <nav>
+    <div class="nav-container">
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="#services">Services</a>
+        <a href="#placements">Placements</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <section class="section" id="services">
+      <h2>Our Services</h2>
+      <div class="service-grid">
+        <div class="service-card">
+          <i class="fas fa-briefcase"></i>
+          <h3>Career Counseling</h3>
+          <p>One-on-one guidance sessions with industry experts to help you choose the right career path.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-file-alt"></i>
+          <h3>Resume Building</h3>
+          <p>Professional assistance in creating impactful resumes and cover letters.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-users"></i>
+          <h3>Mock Interviews</h3>
+          <p>Practice interviews with industry professionals to prepare you for real job interviews.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-handshake"></i>
+          <h3>Industry Connect</h3>
+          <p>Regular networking events and industry interactions for better exposure.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="placements">
+      <h2>Placement Statistics</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">90%</div>
+          <p>Placement Rate</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">500+</div>
+          <p>Company Partnerships</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">₹6L</div>
+          <p>Average Package</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">100+</div>
+          <p>Students Placed</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="cta-section">
+      <h2>Ready to Start Your Career Journey?</h2>
+      <p>Schedule a career counseling session with our experts</p>
+      <a href="#contact" class="cta-button">Book Appointment</a>
+    </div>
+
+    <section class="section" id="contact">
+      <h2>Contact Career Services</h2>
+      <p><i class="fas fa-envelope"></i> info@quantechinfosystem.com</p>
+      <p><i class="fas fa-phone"></i> +91-9488842786 | +91-6380871558</p>
+      <p><i class="fas fa-map-marker-alt"></i> QUANTECH INFOSYSTEM LLPAbove Dhuliya Weigh-Bridge, Chalisgaon Rd, Ansar Nagar, Dhule, Maharashtra, India.</p>
+    </section>
+  </div>
+</body>
+</html> 

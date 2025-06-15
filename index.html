@@ -1,0 +1,1821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!-- Load site configuration -->
+  <script src="config.js"></script>
+  <script>
+    // Function to update meta tags using config
+    function updateMetaTags() {
+      const config = window.siteConfig;
+      
+      // Update title and meta tags
+      document.title = `${config.seo.defaultTitle} | ${config.orgName}`;
+      document.querySelector('meta[name="title"]').content = `${config.seo.defaultTitle} | ${config.orgName}`;
+      document.querySelector('meta[name="description"]').content = config.seo.defaultDescription;
+      document.querySelector('meta[name="keywords"]').content = config.seo.defaultKeywords;
+      
+      // Update Open Graph tags
+      document.querySelector('meta[property="og:url"]').content = config.websiteUrl;
+      document.querySelector('meta[property="og:title"]').content = `${config.seo.defaultTitle} | ${config.orgName}`;
+      document.querySelector('meta[property="og:description"]').content = config.seo.defaultDescription;
+      document.querySelector('meta[property="og:image"]').content = `${config.websiteUrl}${config.logoPath}`;
+      
+      // Update Twitter Card tags
+      document.querySelector('meta[property="twitter:url"]').content = config.websiteUrl;
+      document.querySelector('meta[property="twitter:title"]').content = `${config.seo.defaultTitle} | ${config.orgName}`;
+      document.querySelector('meta[property="twitter:description"]').content = config.seo.defaultDescription;
+      document.querySelector('meta[property="twitter:image"]').content = `${config.websiteUrl}${config.logoPath}`;
+      
+      // Update theme color
+      document.querySelector('meta[name="theme-color"]').content = config.seo.themeColor;
+      document.querySelector('meta[name="msapplication-TileColor"]').content = config.seo.themeColor;
+      
+      // Update Schema.org data
+      const schemaScript = document.querySelector('script[type="application/ld+json"]');
+      const schemaData = JSON.parse(schemaScript.textContent);
+      schemaData.provider.name = config.orgFullName;
+      schemaData.provider.url = config.websiteUrl;
+      schemaData.provider.logo = `${config.websiteUrl}${config.logoPath}`;
+      schemaScript.textContent = JSON.stringify(schemaData, null, 2);
+    }
+    
+    // Update meta tags when the page loads
+    document.addEventListener('DOMContentLoaded', updateMetaTags);
+  </script>
+  
+  <!-- Primary Meta Tags -->
+  <title>Loading...</title>
+  <meta name="title" content="Loading...">
+  <meta name="description" content="Loading...">
+  <meta name="keywords" content="Loading...">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="">
+  <meta property="og:title" content="Loading...">
+  <meta property="og:description" content="Loading...">
+  <meta property="og:image" content="">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="">
+  <meta property="twitter:title" content="Loading...">
+  <meta property="twitter:description" content="Loading...">
+  <meta property="twitter:image" content="">
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/favicon/site.webmanifest">
+  <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#2563eb">
+  
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles/index.css">
+
+  <!-- Schema.org markup -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "QUANTECH INFOSYSTEM",
+      "url": "https://www.quantechinfosystem.com",
+      "logo": "https://www.quantechinfosystem.com/Logos/QUANTECH_Logo.png",
+      "description": "QUANTECH offers industry-focused B.Voc degree programs with hands-on training and guaranteed placements.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Above Dhuliya Way-Bridge, Chalisgaon Rd, Ansar Nagar",
+        "addressLocality": "Dhule",
+        "addressRegion": "Maharashtra",
+        "postalCode": "",
+        "addressCountry": "IN"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-9488842786",
+        "contactType": "customer service"
+      },
+      "sameAs": [
+        "https://www.instagram.com/quantech_infosystem_llp",
+        "https://youtube.com/@quantechinfosystemllp"
+      ]
+    }
+  </script>
+  <style>
+    /* Root variables */
+    
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Loader Animation
+      const loaderWrapper = document.querySelector('.loader-wrapper');
+      setTimeout(() => {
+        loaderWrapper.classList.add('fade-out');
+        setTimeout(() => {
+          loaderWrapper.style.display = 'none';
+        }, 1000);
+      }, 2500);
+
+      // Animation observer
+      const animateElements = document.querySelectorAll('.section, .card, .feature-box, .testimonial, .program-card, .news-item, .event-card');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Add small delay before starting animation
+            setTimeout(() => {
+              entry.target.classList.add('visible');
+            }, 100);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.2,
+        rootMargin: '50px'
+      });
+
+      // Observe all animated elements
+      animateElements.forEach(element => {
+        observer.observe(element);
+      });
+
+      // Set animation order for staggered elements
+      ['card', 'feature-box', 'program-card'].forEach(className => {
+        document.querySelectorAll('.' + className).forEach((item, index) => {
+          item.style.setProperty('--animation-order', index + 1);
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <!-- Add loader at the start of body -->
+  <div class="loader-wrapper">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Updated Preloader Structure -->
+  <div class="preloader">
+    <div class="book-loader">
+      <div class="book-page"></div>
+      <div class="book-page"></div>
+      <div class="book-page"></div>
+      <div class="loader-text">Loading Knowledge</div>
+      <div class="loader-progress">
+        <div class="progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Update section classes -->
+  <header class="fade-in zoom-in">
+    <div class="header-content">
+      <div class="header-logo">
+        <img src="Logos\QUANTECH_Logo.png" alt="QUANTECH Logo">
+      </div>
+      <div class="header-text">
+        <h1>WHERE LEARNING MEETS OPPORTUNITY</h1>
+        <p>Empowering Skills. Building Careers.</p>
+      </div>
+    </div>
+  </header>
+
+  <nav class="fade-in">
+    <div class="nav-container">
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+      </button>
+      <div class="nav-links" role="navigation" aria-label="Main navigation">
+        <a href="#about" role="menuitem">About</a>
+        <a href="#courses" role="menuitem">Courses</a>
+        <a href="#admission" role="menuitem">Admission</a>
+        <a href="#contact" role="menuitem">Contact</a>
+        <a href="career-services.html" role="menuitem">Career Services</a>
+        <a href="affiliations.html" role="menuitem">Affiliations</a>
+        <a href="more.html" role="menuitem">B.Voc</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="hero slide-in-left">
+    <h1>Discover Our Programs</h1>
+    <p>Industry-ready curriculum for skill-driven careers</p>
+    <a href="#courses" class="cta-button explore-btn">Explore Programs</a>
+  </div>
+
+  <section class="stats-section slide-in-right">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <i class="fas fa-user-graduate"></i>
+        <div class="stat-number">5000+</div>
+        <div>Successful Graduates</div>
+      </div>
+      <div class="stat-item">
+        <i class="fas fa-building"></i>
+        <div class="stat-number">100+</div>
+        <div>Industry Partners</div>
+      </div>
+      <div class="stat-item">
+        <i class="fas fa-briefcase"></i>
+        <div class="stat-number">90%</div>
+        <div>Placement Rate</div>
+      </div>
+      <div class="stat-item">
+        <i class="fas fa-award"></i>
+        <div class="stat-number">15+</div>
+        <div>Years of Excellence</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section zoom-in" id="about">
+    <h2>About Our Programs</h2>
+    <div class="features-grid">
+      <div class="feature-item">
+        <i class="fas fa-laptop-code"></i>
+        <div>
+          <h3>Industry-Aligned Curriculum</h3>
+          <p>Our programs are designed in collaboration with industry experts to ensure relevant skill development.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <i class="fas fa-hands-helping"></i>
+        <div>
+          <h3>Practical Training</h3>
+          <p>60% practical and 40% theory-based learning approach with hands-on industry exposure.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <i class="fas fa-certificate"></i>
+        <div>
+          <h3>Multiple Exit & Entry Options</h3>
+          <p>Flexible program structure with certificate, diploma, and degree exit & entry options.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section fade-in" id="courses">
+    <h2>B.Voc Degree Courses</h2>
+    <div class="course-categories">
+      <!-- Technology & Engineering -->
+      <div class="category-container">
+        <div class="category-header">
+          <h3>Technology & Engineering</h3>
+          <span class="icon"><i class="fas fa-chevron-down"></i></span>
+        </div>
+        <div class="category-content">
+          <ul class="course-list">
+            <li class="course-item">
+              <div class="course-header">
+                <span>Computer Sciences & ITES</span>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="course-details">
+                <div class="course-details-content">
+                  <img src="IMG/Technology & Engineering_IT ITes.jpg" alt="Computer Sciences & ITES" class="course-image">
+                  <div class="course-info">
+                    <h4>Computer Sciences & ITES</h4>
+                    <p>Explore the world of computer science and IT enabled services with our comprehensive program.</p>
+                    <a href="Pdf/BVOC Curriculum/Technology & Engineering_Computer Sciences & ITES.pdf" class="pdf-button">
+                      <i class="fas fa-download"></i>
+                      Download Course Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="course-item">
+              <div class="course-header">
+                <span>Information Technology</span>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="course-details">
+                <div class="course-details-content">
+                  <img src="IMG/Technology & Engineering_Computer Tech.jpg" alt="Information Technology" class="course-image">
+                  <div class="course-info">
+                    <h4>Information Technology</h4>
+                    <p>Master the fundamentals and advanced concepts of Information Technology.</p>
+                    <a href="Pdf/BVOC Curriculum/Technology & Engineering_Information Technology.pdf" class="pdf-button">
+                      <i class="fas fa-download"></i>
+                      Download Course Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <li class="course-item">
+                <div class="course-header">
+                  <span>Web Technologies</span>
+                  <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="course-details">
+                  <div class="course-details-content">
+                    <img src="IMG/Technology & Engineering_Web Technologies.jpg" alt="Information Technology" class="course-image">
+                    <div class="course-info">
+                      <h4>Web Technologies</h4>
+                      <p>Master the fundamentals and advanced concepts of Web Technology.</p>
+                      <a href="Pdf/BVOC Curriculum/Technology & Engineering_Information Technology.pdf" class="pdf-button">
+                        <i class="fas fa-download"></i>
+                        Download Course Details
+                      </a>
+                    </div>
+                  </div>
+                </div>
+            </li>
+            <li class="course-item">
+              <div class="course-header">
+                <span>IT and Networking</span>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="course-details">
+                <div class="course-details-content">
+                  <img src="IMG/Technology & Engineering_IT and Networking.jpg" alt="IT and Networking" class="course-image">
+                  <div class="course-info">
+                    <h4>IT and Networking</h4>
+                    <p>Learn IT infrastructure and networking technologies.</p>
+                    <a href="Pdf/BVOC Curriculum/Technology & Engineering_IT and Networking.pdf" class="pdf-button">
+                      <i class="fas fa-download"></i>
+                      Download Course Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="course-item">
+              <div class="course-header">
+                <span>Machine Learning and Artificial Intelligence</span>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="course-details">
+                <div class="course-details-content">
+                  <img src="IMG/Technology & Engineering_Machine Learning and Artificial Intelligence.jpg" alt="Machine Learning and AI" class="course-image">
+                  <div class="course-info">
+                    <h4>Machine Learning and Artificial Intelligence</h4>
+                    <p>Master AI and ML technologies with practical applications.</p>
+                    <a href="Pdf/BVOC Curriculum/Technology & Engineering_Machine Learning and Artificial Intelligence.pdf" class="pdf-button">
+                      <i class="fas fa-download"></i>
+                      Download Course Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="course-item">
+              <div class="course-header">
+                <span>E-Commerce and Digital Marketing</span>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="course-details">
+                <div class="course-details-content">
+                  <img src="IMG/Technology & Engineering_E-Commerce & Digital Marketing.jpeg" alt="E-Commerce and Digital Marketing" class="course-image">
+                  <div class="course-info">
+                    <h4>E-Commerce and Digital Marketing</h4>
+                    <p>Learn digital marketing strategies and e-commerce management.</p>
+                    <a href="Pdf/BVOC Curriculum/Technology & Engineering_E-Commerce and Digital Marketing.pdf" class="pdf-button">
+                      <i class="fas fa-download"></i>
+                      Download Course Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="course-item">
+              <div class="course-header">
+                <span>3D Animation and VFX</span>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="course-details">
+                <div class="course-details-content">
+                  <img src="IMG/Technology & Engineering_3D Animation and VFX.jpg" alt="3D Animation and VFX" class="course-image">
+                  <div class="course-info">
+                    <h4>3D Animation and VFX</h4>
+                    <p>Create stunning visual effects and animations.</p>
+                    <a href="Pdf/BVOC Curriculum/Technology & Engineering_3D Animation and VFX.pdf" class="pdf-button">
+                      <i class="fas fa-download"></i>
+                      Download Course Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="course-item">
+              <div class="course-header">
+                <span>Game Design</span>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="course-details">
+                <div class="course-details-content">
+                  <img src="IMG/Technology & Engineering_Game design.jpg" alt="Game Design" class="course-image">
+                  <div class="course-info">
+                    <h4>Game Design</h4>
+                    <p>Learn game development and interactive design.</p>
+                    <a href="Pdf/BVOC Curriculum/Technology & Engineering_Game Design.pdf" class="pdf-button">
+                      <i class="fas fa-download"></i>
+                      Download Course Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="course-item">
+              <div class="course-header">
+                <span>Robotics & Artificial Intelligence</span>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="course-details">
+                <div class="course-details-content">
+                  <img src="IMG/Technology & Engineering_Robotics & Artificial Intelligence.jpg" alt="Robotics & AI" class="course-image">
+                  <div class="course-info">
+                    <h4>Robotics & Artificial Intelligence</h4>
+                    <p>Study robotics systems and AI applications.</p>
+                    <a href="Pdf/BVOC Curriculum/Technology & Engineering_Robotics & Artificial Intelligence.pdf" class="pdf-button">
+                      <i class="fas fa-download"></i>
+                      Download Course Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="course-item">
+              <div class="course-header">
+                <span>IT ITes Software Development</span>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="course-details">
+                <div class="course-details-content">
+                  <img src="IMG/Technology & Engineering_IT ITes.jpg" alt="IT ITes Software Development" class="course-image">
+                  <div class="course-info">
+                    <h4>IT ITes Software Development</h4>
+                    <p>Master software development and IT enabled services.</p>
+                    <a href="Pdf/BVOC Curriculum/Technology & Engineering_IT ITes Software Development.pdf" class="pdf-button">
+                      <i class="fas fa-download"></i>
+                      Download Course Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Health Sciences & Allied Health -->
+      <div class="category-container">
+        <div class="category-header">
+          <h3>Health Sciences & Allied Health</h3>
+          <span class="icon"><i class="fas fa-chevron-down"></i></span>
+        </div>
+        <div class="category-content">
+          <ul class="course-list">
+            <li class="course-item">
+              <div class="course-header">
+                <span>Medical Lab Technology</span>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="course-details">
+                <div class="course-details-content">
+                  <img src="IMG/Health Sciences & Allied Health_Medical Lab Technology.jpg" alt="Medical Lab Technology" class="course-image">
+                  <div class="course-info">
+                    <h4>Medical Lab Technology</h4>
+                    <p>Learn laboratory techniques and medical testing procedures.</p>
+                    <a href="Pdf/BVOC Curriculum/Health Sciences & Allied Health_Medical Lab Technology.pdf" class="pdf-button" download>
+                      <i class="fas fa-download"></i>
+                      Download Course Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="course-item">
+              <div class="course-header">
+                <span>Physiotherapy</span>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="course-details">
+                <div class="course-details-content">
+                  <img src="IMG/Health Sciences & Allied Health_Phisiotherapy.jpg" alt="Physiotherapy" class="course-image">
+                  <div class="course-info">
+                    <h4>Physiotherapy</h4>
+                    <p>Study physical therapy techniques and rehabilitation methods.</p>
+                    <a href="Pdf/BVOC Curriculum/Health Sciences & Allied Health_Physiotherapy.pdf" class="pdf-button">
+                      <i class="fas fa-download"></i>
+                      Download Course Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="course-item">
+              <div class="course-header">
+                <span>Dental Hygiene</span>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="course-details">
+                <div class="course-details-content">
+                  <img src="IMG/Health Sciences & Allied Health_Dental Hygiene.jpg" alt="Dental Hygiene" class="course-image">
+                  <div class="course-info">
+                    <h4>Dental Hygiene</h4>
+                    <p>Learn dental care and oral hygiene practices.</p>
+                    <a href="Pdf/BVOC Curriculum/Health Sciences & Allied Health_Dental Hygiene.pdf" class="pdf-button">
+                      <i class="fas fa-download"></i>
+                      Download Course Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="course-item">
+              <div class="course-header">
+                <span>Optometry</span>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="course-details">
+                <div class="course-details-content">
+                  <img src="IMG/Health Sciences & Allied Health_Optometry.jpg" alt="Optometry" class="course-image">
+                  <div class="course-info">
+                    <h4>Optometry</h4>
+                    <p>Study eye care and vision science.</p>
+                    <h4>Beauty and Wellness</h4>
+                    <p>Study beauty therapy and wellness management.</p>
+                    <a href="Pdf/BVOC Curriculum/Health Sciences & Allied Health_Optometry.pdf" class="pdf-button" download>
+                      <i class="fas fa-download"></i>
+                      Download Course Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="course-item">
+              <div class="course-header">
+                <span>Critical Care Technology</span>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="course-details">
+                <div class="course-details-content">
+                  <img src="IMG/Health Sciences & Allied Health_Critiacal Care.jpg" alt="Critical Care Technology" class="course-image">
+                  <div class="course-info">
+                    <h4>Critical Care Technology</h4>
+                    <p>Learn advanced critical care techniques and patient management.</p>
+                    <a href="Pdf/BVOC Curriculum/Health Sciences & Allied Health_Critical Care Technology.pdf" class="pdf-button">
+                      <i class="fas fa-download"></i>
+                      Download Course Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="course-item">
+              <div class="course-header">
+                <span>Dialysis Technology</span>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="course-details">
+                <div class="course-details-content">
+                  <img src="IMG/Health Sciences & Allied Health_Dialysis Technology.jpg" alt="Dialysis Technology" class="course-image">
+                  <div class="course-info">
+                    <h4>Dialysis Technology</h4>
+                    <p>Study dialysis procedures and patient care.</p>
+                    <a href="Pdf/BVOC Curriculum/Health Sciences & Allied Health_Dialysis Technology.pdf" class="pdf-button">
+                      <i class="fas fa-download"></i>
+                      Download Course Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="course-item">
+              <div class="course-header">
+                <span>Medical Imaging Technology</span>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="course-details">
+                <div class="course-details-content">
+                  <img src="IMG/Health Sciences & Allied Health_Medical Imaging Technology.jpg" alt="Medical Imaging Technology" class="course-image">
+                  <div class="course-info">
+                    <h4>Medical Imaging Technology</h4>
+                    <p>Learn medical imaging techniques and equipment operation.</p>
+                    <a href="Pdf/BVOC Curriculum/Health Sciences & Allied Health_Medical Imaging Technology.pdf" class="pdf-button">
+                      <i class="fas fa-download"></i>
+                      Download Course Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="course-item">
+              <div class="course-header">
+                <span>Para Medical and Health Administration</span>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="course-details">
+                <div class="course-details-content">
+                  <img src="IMG/Health Sciences & Allied Health_Health Care.jpg" alt="Para Medical and Health Administration" class="course-image">
+                  <div class="course-info">
+                    <h4>Para Medical and Health Administration</h4>
+                    <p>Study paramedical services and healthcare administration.</p>
+                    <a href="Pdf/BVOC Curriculum/Health Sciences & Allied Health_Para Medical and Health Administration.pdf" class="pdf-button">
+                      <i class="fas fa-download"></i>
+                      Download Course Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="course-item">
+              <div class="course-header">
+                <span>Patient Care Management</span>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="course-details">
+                <div class="course-details-content">
+                  <img src="IMG/Health Sciences & Allied Health_Patient Care Management.jpg" alt="Patieny care" class="course-image">
+                  <div class="course-info">
+                    <h4>Patient Care Management</h4>
+                    <p>Learn comprehensive patient care and management skills.</p>
+                    <a href="Pdf/BVOC Curriculum/Health Sciences & Allied Health_Patient Care Management.pdf" class="pdf-button">
+                      <i class="fas fa-download"></i>
+                      Download Course Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="course-item">
+              <div class="course-header">
+                <span>Pharmaceutical Chemistry</span>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="course-details">
+                <div class="course-details-content">
+                  <img src="IMG/Health Sciences & Allied Health_Pharmaceutical Chemistry.jpg" alt="Pharmaceutical Chemistry" class="course-image">
+                  <div class="course-info">
+                    <h4>Pharmaceutical Chemistry</h4>
+                    <p>Study pharmaceutical compounds and drug development.</p>
+                    <a href="Pdf/BVOC Curriculum/Health Sciences & Allied Health_Pharmaceutical Chemistry.pdf" class="pdf-button">
+                      <i class="fas fa-download"></i>
+                      Download Course Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="course-item">
+              <div class="course-header">
+                <span>CMS & ED (Community Medical Services & Essential Drugs)</span>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="course-details">
+                <div class="course-details-content">
+                  <img src="IMG/Health Sciences & Allied Health_CMS & ED.jpg" alt="CMS & ED" class="course-image">
+                  <div class="course-info">
+                    <h4>CMS & ED (Community Medical Services & Essential Drugs)</h4>
+                    <p>Study community healthcare services and essential drug management.</p>
+                    <a href="Pdf/BVOC Curriculum/Health Sciences & Allied Health_CMS & ED (Community Medical Services & Essential Drugs).pdf" class="pdf-button">
+                      <i class="fas fa-download"></i>
+                      Download Course Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Aviation & Transportation -->
+      <div class="category-container">
+        <div class="category-header">
+          <h3>Aviation & Transportation</h3>
+          <span class="icon"><i class="fas fa-chevron-down"></i></span>
+        </div>
+        <div class="category-content">
+          <ul class="course-list">
+            <li class="course-item">
+              <div class="course-header">
+                <span>Airport and Airline Management</span>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="course-details">
+                <div class="course-details-content">
+                  <img src="IMG/Aviation & Transportation_Airport Airline Management.jpg" alt="Airport and Airline Management" class="course-image">
+                  <div class="course-info">
+                    <h4>Airport and Airline Management</h4>
+                    <p>Learn airport operations and airline management.</p>
+                    <a href="Pdf/BVOC Curriculum/Airport and Airline Management.pdf" class="pdf-button">
+                      <i class="fas fa-download"></i>
+                      Download Course Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Early Childhood & Education -->
+      <div class="category-container">
+        <div class="category-header">
+          <h3>Early Childhood & Education</h3>
+          <span class="icon"><i class="fas fa-chevron-down"></i></span>
+        </div>
+        <div class="category-content">
+          <ul class="course-list">
+            <li class="course-item">
+              <div class="course-header">
+                <span>Child Care and Education</span>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="course-details">
+                <div class="course-details-content">
+                  <img src="IMG/Early Childhood & Education_Child Care  Education.jpg" alt="Child Care and Education" class="course-image">
+                  <div class="course-info">
+                    <h4>Child Care and Education</h4>
+                    <p>Study child development and educational practices.</p>
+                    <a href="Pdf/BVOC Curriculum/Child Care and Education.pdf" class="pdf-button">
+                      <i class="fas fa-download"></i>
+                      Download Course Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Safety & Environment -->
+      <div class="category-container">
+        <div class="category-header">
+          <h3>Safety & Environment</h3>
+          <span class="icon"><i class="fas fa-chevron-down"></i></span>
+        </div>
+        <div class="category-content">
+          <ul class="course-list">
+            <li class="course-item">
+              <div class="course-header">
+                <span>Fire Technology & Industrial Safety Management</span>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="course-details">
+                <div class="course-details-content">
+                  <img src="IMG/Safety & Environment_Fire Technology & Industrial Safety  Management.jpg" alt="Fire Technology & Industrial Safety Management" class="course-image">
+                  <div class="course-info">
+                    <h4>Fire Technology & Industrial Safety Management</h4>
+                    <p>Learn fire safety and industrial safety management.</p>
+                    <a href="Pdf/BVOC Curriculum/Safety & Environment_Fire Technology & Industrial Safety Management.pdf" class="pdf-button" download>
+                      <i class="fas fa-download"></i>
+                      Download Course Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="course-item">
+              <div class="course-header">
+                <span>Refrigeration and Air Conditioning</span>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="course-details">
+                <div class="course-details-content">
+                  <img src="IMG/Safety & Environment_Refrigeration and Air Conditioning.webp" alt="Refrigeration and Air Conditioning" class="course-image">
+                  <div class="course-info">
+                    <h4>Refrigeration and Air Conditioning</h4>
+                    <p>Study HVAC systems and their maintenance.</p>
+                    <a href="Pdf/BVOC Curriculum/Safety & Environment_Refrigeration and Air Conditioning.pdf" class="pdf-button" download>
+                      <i class="fas fa-download"></i>
+                      Download Course Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="course-item">
+              <div class="course-header">
+                <span>Power Renewable Energy Technology and Management</span>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="course-details">
+                <div class="course-details-content">
+                  <img src="IMG/Safety & Environment_Power Renewable Energy Technology & Management.jpg" alt="Power Renewable Energy Technology and Management" class="course-image">
+                  <div class="course-info">
+                    <h4>Power Renewable Energy Technology and Management</h4>
+                    <p>Study renewable energy technologies and their management.</p>
+                    <a href="Pdf/BVOC Curriculum/Safety & Environment_Power Renewable Energy Technology and Management.pdf" class="pdf-button">
+                      <i class="fas fa-download"></i>
+                      Download Course Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Media & Communication -->
+      <div class="category-container">
+        <div class="category-header">
+          <h3>Media & Communication</h3>
+          <span class="icon"><i class="fas fa-chevron-down"></i></span>
+        </div>
+        <div class="category-content">
+          <ul class="course-list">
+            <li class="course-item">
+              <div class="course-header">
+                <span>Media and Entertainment</span>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="course-details">
+                <div class="course-details-content">
+                  <img src="IMG/Media & Communication_Media & Entertainment.png" alt="Media and Entertainment" class="course-image">
+                  <div class="course-info">
+                    <h4>Media and Entertainment</h4>
+                    <p>Study media production and entertainment management.</p>
+                    <a href="Pdf/BVOC Curriculum/Media & Communication_Media and Entertainment.pdf" class="pdf-button" download>
+                      <i class="fas fa-download"></i>
+                      Download Course Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+<!-- 
+       Other Specialized Programs 
+      <div class="category-container">
+        <div class="category-header">
+          <h3>Other Specialized Programs</h3>
+          <span class="icon"><i class="fas fa-chevron-down"></i></span>
+        </div>
+        <div class="category-content">
+          <ul class="course-list">
+            <li class="course-item">
+              <div class="course-header">
+                <span>Airport and Airline Management</span>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="course-details">
+                <div class="course-details-content">
+                  <img src="path_to_course_image.jpg" alt="Airport and Airline Management" class="course-image">
+                  <div class="course-info">
+                    <h4>Airport and Airline Management</h4>
+                    <p>Learn airport operations and airline management.</p>
+                    <a href="Pdf/BVOC Curriculum/Airport and Airline Management.pdf" class="pdf-button" download>
+                      <i class="fas fa-download"></i>
+                      Download Course Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="course-item">
+              <div class="course-header">
+                <span>Child Care and Education</span>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="course-details">
+                <div class="course-details-content">
+                  <img src="IMG/Glocal.webp" alt="Child Care and Education" class="course-image">
+                  <div class="course-info">
+                    <h4>Child Care and Education</h4>
+                    <p>Study child development and educational practices.</p>
+                    <a href="Pdf/BVOC Curriculum/Child Care and Education.pdf" class="pdf-button" download>
+                      <i class="fas fa-download"></i>
+                      Download Course Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div> -->
+
+      <!-- Beauty, Design & Lifestyle -->
+      <div class="category-container">
+        <div class="category-header">
+          <h3>Beauty, Design & Lifestyle</h3>
+          <span class="icon"><i class="fas fa-chevron-down"></i></span>
+        </div>
+        <div class="category-content">
+          <ul class="course-list">
+            <li class="course-item">
+              <div class="course-header">
+                <span>Interior Design</span>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="course-details">
+                <div class="course-details-content">
+                  <img src="IMG/Beauty, Design & Lifestyle_Interior.jpg" alt="Interior Design" class="course-image">
+                  <div class="course-info">
+                    <h4>Interior Design</h4>
+                    <p>Learn to create beautiful and functional interior spaces.</p>
+                    <a href="Pdf/BVOC Curriculum/Beauty, Design & Lifestyle_Interior Design.pdf" class="pdf-button">
+                      <i class="fas fa-download"></i>
+                      Download Course Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="course-item">
+              <div class="course-header">
+                <span>Beauty and Wellness</span>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="course-details">
+                <div class="course-details-content">
+                  <img src="IMG/Beauty, Design & Lifestyle_Beauty and Wellnes.jpg" alt="Beauty and Wellness" class="course-image">
+                  <div class="course-info">
+                    <h4>Beauty and Wellness</h4>
+                    <p>Study beauty therapy and wellness management.</p>
+                    <a href="Pdf/BVOC Curriculum/Beauty, Design & Lifestyle_Beauty and Wellness.pdf" class="pdf-button">
+                      <i class="fas fa-download"></i>
+                      Download Course Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="course-item">
+              <div class="course-header">
+                <span>Visual Communication</span>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="course-details">
+                <div class="course-details-content">
+                  <img src="IMG/Beauty, Design & Lifestyle_Visual Communication.jpg" alt="Visual Communication" class="course-image">
+                  <div class="course-info">
+                    <h4>Visual Communication</h4>
+                    <p>Master visual design and communication strategies.</p>
+                    <a href="Pdf/BVOC Curriculum/Beauty, Design & Lifestyle_Visual Communication.pdf" class="pdf-button">
+                      <i class="fas fa-download"></i>
+                      Download Course Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="course-item">
+              <div class="course-header">
+                <span>Jewellery Design & Management</span>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+              </div>
+              <div class="course-details">
+                <div class="course-details-content">
+                  <img src="IMG/Beauty, Design & Lifestyle_Jewellery Design and Management.jpg" alt="Jewellery Design & Management" class="course-image">
+                  <div class="course-info">
+                    <h4>Jewellery Design & Management</h4>
+                    <p>Learn jewellery design and business management.</p>
+                    <a href="Pdf/BVOC Curriculum/Beauty, Design & Lifestyle_Jewellery Design & Management.pdf" class="pdf-button">
+                      <i class="fas fa-download"></i>
+                      Download Course Details
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <section class="aicvps">
+  <a href="aicvps.html" class="aicvps-button">
+    <span>AICVPS</span>
+    <i class="fas fa-arrow-right"></i>
+  </a>
+</section> 
+
+  <section class="testimonials fade-in">
+    <h2>What Our Students Say</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <img src="IMG\Maaz Kazi.jpg" alt="Student">
+        <div class="quote">"The practical approach to learning at QUANTECH INFOSYSTEM helped with my Business Startup before graduation."</div>
+        <div class="author">- Maaz Kazi</div>
+        <div>Azhka Technologies</div>
+      </div>
+      <div class="testimonial-card">
+        <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Student">
+        <div class="quote">"The industry exposure and hands-on training gave me a significant advantage in my career."</div>
+        <div class="author">- Michael Chen</div>
+        <div>Healthcare Management Graduate</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section fade-in">
+    <h2>Ready to Start Your Career Journey?</h2>
+    <p>Join our industry-focused programs and build a successful career</p>
+    <a href="#admission" class="cta-button">Apply Now</a>
+  </section>
+
+  <section class="section fade-in" id="admission">
+    <h2>Admission Information</h2>
+    <ul>
+      <li>Eligibility: 10+2 in any stream</li>
+      <li>Duration: 3 Years (Exit options after each year)</li>
+      <li>Application: Online/Offline</li>
+      <li>Documents: Marksheets, ID Proof, Passport photo</li>
+    </ul>
+  </section>
+
+  <section class="section fade-in" id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: info@quantechinfosystem.com | Phone: +91-9488842786 | +91-6380871558</p>
+    <p>Address: QUANTECH INFOSYSTEM LLP, Above Dhuliya Way-Bridge, Chalisgaon Rd, Ansar Nagar, Dhule, Maharashtra, India.</p>
+  </section>
+
+  <footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#about"><i class="fas fa-chevron-right"></i>About Us</a></li>
+                    <li><a href="#courses"><i class="fas fa-chevron-right"></i>Our Courses</a></li>
+                    <li><a href="#admission"><i class="fas fa-chevron-right"></i>Admissions</a></li>
+                    <li><a href="#contact"><i class="fas fa-chevron-right"></i>Contact Us</a></li>
+                    <li><a href="career-services.html"><i class="fas fa-chevron-right"></i>Career Services</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Additional Links</h3>
+                <ul class="footer-links">
+                    <li><a href="affiliations.html"><i class="fas fa-chevron-right"></i>Affiliations & Industry</a></li>
+                    <li><a href="events.html"><i class="fas fa-chevron-right"></i>Events</a></li>
+                    <li><a href="news.html"><i class="fas fa-chevron-right"></i>News & Updates</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="contact-info">
+                    <p><i class="fas fa-phone"></i>+91-9488842786 | +91-6380871558</p>
+                    <p><i class="fas fa-envelope"></i>info@quantechinfosystem.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i>Dhule, Maharashtra</p>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/quantech_infosystem_llp?igsh=MWU2MWgxYmFjeDJhcg==" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://youtube.com/@quantechinfosystemllp?si=koG8STnpgDEGXnB3" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-4 border-light">
+        <div class="text-center">
+            <p class="mb-0">© 2025 QUANTECH INFOSYSTEM. All rights reserved.</p>
+        </div>
+    </div>
+  </footer>
+
+  <!-- Add this before the closing </body> tag -->
+  <div class="pdf-modal" id="pdfModal">
+    <button class="close-modal" onclick="closePdfModal()">&times;</button>
+    <div class="pdf-modal-content">
+      <iframe class="pdf-viewer" id="pdfViewer"></iframe>
+    </div>
+  </div>
+
+  <script>
+    // Prevent FOUC
+    document.documentElement.style.visibility = 'visible';
+
+    // Mobile Navigation Toggle with scroll lock
+    const body = document.body;
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    function toggleNav() {
+      const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', !isExpanded);
+      navLinks.classList.toggle('active');
+      body.classList.toggle('nav-active');
+    }
+
+    navToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggleNav();
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (event) => {
+      const nav = document.querySelector('.nav-container');
+      if (!nav.contains(event.target) && navLinks.classList.contains('active')) {
+        toggleNav();
+      }
+    });
+
+    // Handle escape key for accessibility
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+        toggleNav();
+      }
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (navLinks.classList.contains('active')) {
+          toggleNav();
+        }
+      });
+    });
+
+    // Smooth scroll with fallback
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const target = document.querySelector(targetId);
+        
+        if (target) {
+          if ('scrollBehavior' in document.documentElement.style) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          } else {
+            // Fallback for browsers that don't support smooth scrolling
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
+
+    // Intersection Observer with fallback
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '50px'
+      });
+
+      document.querySelectorAll('.section, #admission li').forEach((element, index) => {
+        observer.observe(element);
+        if (element.tagName === 'LI') {
+          element.style.transitionDelay = `${index * 0.1}s`;
+        }
+      });
+    } else {
+      // Fallback for browsers that don't support Intersection Observer
+      document.querySelectorAll('.section, #admission li').forEach(element => {
+        element.classList.add('visible');
+      });
+    }
+
+    // Prevent zoom on double tap in iOS
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', (e) => {
+      const now = Date.now();
+      if (now - lastTouchEnd <= 300) {
+        e.preventDefault();
+      }
+      lastTouchEnd = now;
+    }, false);
+
+    // Handle form submission (if any forms are added later)
+    document.querySelectorAll('form').forEach(form => {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // Add form handling logic here
+      });
+    });
+
+    // Load images lazily
+    if ('loading' in HTMLImageElement.prototype) {
+      document.querySelectorAll('img').forEach(img => {
+        img.loading = 'lazy';
+      });
+    }
+
+    // Check if CSS custom properties are supported
+    if (!window.CSS || !CSS.supports('color', 'var(--primary)')) {
+      // Fallback styles could be added here
+      console.warn('CSS custom properties are not supported in this browser');
+    }
+
+    // Course category and details dropdown functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // Category dropdowns
+      document.querySelectorAll('.category-header').forEach(header => {
+        header.addEventListener('click', function() {
+          const content = this.nextElementSibling;
+          const icon = this.querySelector('.icon');
+          const isActive = this.classList.contains('active');
+          
+          // Close all categories first
+          document.querySelectorAll('.category-header.active').forEach(activeHeader => {
+            if (activeHeader !== this) {
+              activeHeader.classList.remove('active');
+              activeHeader.nextElementSibling.classList.remove('active');
+            }
+          });
+
+          // Toggle current category
+          this.classList.toggle('active');
+          content.classList.toggle('active');
+
+          // If opening this category, close all course items within other categories
+          if (!isActive) {
+            document.querySelectorAll('.course-item.active').forEach(courseItem => {
+              if (!content.contains(courseItem)) {
+                courseItem.classList.remove('active');
+                courseItem.querySelector('.course-details').classList.remove('active');
+              }
+            });
+          }
+        });
+      });
+
+      // Course dropdowns
+      document.querySelectorAll('.course-header').forEach(header => {
+        header.addEventListener('click', function(e) {
+          e.stopPropagation();
+          
+          const courseItem = this.closest('.course-item');
+          const details = this.nextElementSibling;
+          const categoryContent = this.closest('.category-content');
+          const isActive = courseItem.classList.contains('active');
+
+          // Close all other course items in this category
+          const siblingCourses = categoryContent.querySelectorAll('.course-item.active');
+          siblingCourses.forEach(item => {
+            if (item !== courseItem) {
+              item.classList.remove('active');
+              item.querySelector('.course-details').classList.remove('active');
+            }
+          });
+
+          // Toggle current course
+          courseItem.classList.toggle('active');
+          details.classList.toggle('active');
+
+          // Ensure parent category stays open
+          if (!isActive) {
+            const parentCategory = categoryContent.closest('.category-container');
+            parentCategory.querySelector('.category-header').classList.add('active');
+            categoryContent.classList.add('active');
+          }
+        });
+      });
+
+      // Prevent PDF button clicks from triggering dropdowns
+      document.querySelectorAll('.pdf-button').forEach(button => {
+        button.addEventListener('click', (e) => {
+          e.stopPropagation();
+        });
+      });
+
+      // Handle keyboard navigation
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          // Close all dropdowns when ESC is pressed
+          document.querySelectorAll('.category-header.active, .course-item.active').forEach(item => {
+            item.classList.remove('active');
+          });
+          document.querySelectorAll('.category-content.active, .course-details.active').forEach(content => {
+            content.classList.remove('active');
+          });
+        }
+      });
+
+      // Add touch event handling for mobile devices
+      if ('ontouchstart' in window) {
+        document.querySelectorAll('.category-header, .course-header').forEach(header => {
+          let touchStartY = 0;
+          let touchStartX = 0;
+          let moved = false;
+          const moveThreshold = 10; // pixels threshold for detecting movement
+
+          header.addEventListener('touchstart', function(e) {
+            if (e.touches.length === 1) {
+              touchStartY = e.touches[0].clientY;
+              touchStartX = e.touches[0].clientX;
+              moved = false;
+            }
+          });
+
+          header.addEventListener('touchmove', function(e) {
+            if (e.touches.length === 1) {
+              const deltaY = Math.abs(e.touches[0].clientY - touchStartY);
+              const deltaX = Math.abs(e.touches[0].clientX - touchStartX);
+              if (deltaY > moveThreshold || deltaX > moveThreshold) {
+                moved = true;
+              }
+            }
+          });
+
+          header.addEventListener('touchend', function(e) {
+            if (!moved) {
+              // It was a tap, prevent default and trigger click
+              e.preventDefault();
+              this.click();
+            }
+            // If moved, do nothing - allows scrolling
+          });
+        });
+      }
+    });
+
+    // Add this before the existing script content
+    function openPdfModal(pdfPath) {
+      try {
+        const modal = document.getElementById('pdfModal');
+        const viewer = document.getElementById('pdfViewer');
+        
+        // Use Google Docs Viewer as a fallback for PDF preview
+        const encodedPath = encodeURIComponent(window.location.origin + '/' + pdfPath);
+        viewer.src = `https://docs.google.com/viewer?url=${encodedPath}&embedded=true`;
+        
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        // Add loading indicator
+        viewer.insertAdjacentHTML('beforebegin', '<div class="loading-indicator">Loading PDF...</div>');
+        
+        // Remove loading indicator once PDF is loaded
+        viewer.onload = function() {
+          const loadingIndicator = modal.querySelector('.loading-indicator');
+          if (loadingIndicator) {
+            loadingIndicator.remove();
+          }
+        };
+      } catch (error) {
+        console.error('Error opening PDF:', error);
+        alert('There was an error opening the PDF. Please try downloading it instead.');
+      }
+    }
+
+    function closePdfModal() {
+      const modal = document.getElementById('pdfModal');
+      const viewer = document.getElementById('pdfViewer');
+      viewer.src = '';
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('pdfModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closePdfModal();
+      }
+    });
+
+    // Close modal on escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && document.getElementById('pdfModal').classList.contains('active')) {
+        closePdfModal();
+      }
+    });
+
+    // Update all PDF buttons to force download
+    document.querySelectorAll('.pdf-button').forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        const pdfPath = this.getAttribute('href');
+        
+        // Create a temporary anchor element
+        const downloadLink = document.createElement('a');
+        downloadLink.href = pdfPath;
+        downloadLink.download = pdfPath.split('/').pop(); // Set the filename
+        downloadLink.target = '_blank'; // Open in new tab if download fails
+        
+        // Trigger download
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+        
+        // Log for debugging
+        console.log('Downloading:', pdfPath);
+      });
+    });
+
+    // Remove the old downloadPDF function since we're not using it anymore
+    // function downloadPDF(pdfPath, fileName) { ... }
+
+    // Add this function to handle course navigation
+    function openCourse(courseName) {
+      // First scroll to courses section
+      document.getElementById('courses').scrollIntoView({ behavior: 'smooth' });
+      
+      // Find and open the course category containing this course
+      const courseHeaders = document.querySelectorAll('.course-header');
+      courseHeaders.forEach(header => {
+        const headerText = header.querySelector('span').textContent.trim();
+        if (headerText.toLowerCase().includes(courseName.toLowerCase())) {
+          // Find the parent category and open it
+          const category = header.closest('.category-container');
+          if (category) {
+            const categoryHeader = category.querySelector('.category-header');
+            const categoryContent = category.querySelector('.category-content');
+            
+            // Close all other categories first
+            document.querySelectorAll('.category-content.active').forEach(content => {
+              if (content !== categoryContent) {
+                content.classList.remove('active');
+                content.previousElementSibling.classList.remove('active');
+              }
+            });
+            
+            categoryHeader.classList.add('active');
+            categoryContent.classList.add('active');
+          }
+          
+          // Close all other courses first
+          document.querySelectorAll('.course-details.active').forEach(details => {
+            if (details !== header.nextElementSibling) {
+              details.classList.remove('active');
+              details.closest('.course-item').classList.remove('active');
+            }
+          });
+          
+          // Open the specific course
+          const courseItem = header.closest('.course-item');
+          const courseDetails = courseItem.querySelector('.course-details');
+          courseItem.classList.add('active');
+          courseDetails.classList.add('active');
+          
+          // Scroll the course into view after a small delay to allow for animations
+          setTimeout(() => {
+            header.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }, 500);
+        }
+      });
+    }
+
+    // Update footer links to use the data-course attribute
+    document.addEventListener('DOMContentLoaded', function() {
+      const programLinks = document.querySelectorAll('.footer-links a[href="#courses"]');
+      programLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const courseName = this.getAttribute('data-course');
+          openCourse(courseName);
+        });
+      });
+    });
+
+    // Function to open a specific category
+    function openCategory(categoryName) {
+      // First scroll to courses section
+      document.getElementById('courses').scrollIntoView({ behavior: 'smooth' });
+      
+      // Find the category container
+      const categoryHeaders = document.querySelectorAll('.category-header');
+      categoryHeaders.forEach(header => {
+        const headerText = header.querySelector('h3').textContent.trim();
+        if (headerText === categoryName) {
+          // Close all other categories first
+          document.querySelectorAll('.category-content.active').forEach(content => {
+            content.classList.remove('active');
+            content.previousElementSibling.classList.remove('active');
+          });
+          
+          // Open this category
+          const categoryContent = header.nextElementSibling;
+          header.classList.add('active');
+          categoryContent.classList.add('active');
+          
+          // Calculate offset to account for fixed header if any
+          const headerOffset = 100; // Adjust this value based on your fixed header height
+          
+          // Scroll the category into view after a small delay
+          setTimeout(() => {
+            const headerRect = header.getBoundingClientRect();
+            const absoluteHeaderTop = window.pageYOffset + headerRect.top - headerOffset;
+            
+            window.scrollTo({
+              top: absoluteHeaderTop,
+              behavior: 'smooth'
+            });
+          }, 500);
+        }
+      });
+    }
+
+    // Update footer links to use the data-category attribute
+    document.addEventListener('DOMContentLoaded', function() {
+      const categoryLinks = document.querySelectorAll('.footer-links a[href="#courses"]');
+      categoryLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const categoryName = this.getAttribute('data-category');
+          openCategory(categoryName);
+        });
+      });
+    });
+
+    // Preloader and scroll handling
+    document.addEventListener('DOMContentLoaded', function() {
+      // Force scroll position to top immediately
+      window.scrollTo(0, 0);
+      document.body.style.overflow = 'hidden';
+    });
+
+    window.addEventListener('load', function() {
+      // Force scroll position to top again
+      window.scrollTo(0, 0);
+      
+      const preloader = document.querySelector('.preloader');
+      
+      // Ensure body is locked while preloader is visible
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+      document.body.style.top = '0';
+      
+      preloader.classList.add('fade-out');
+      
+      setTimeout(() => {
+        preloader.style.display = 'none';
+        
+        // Reset body position and scroll to top
+        document.body.style.position = '';
+        document.body.style.width = '';
+        document.body.style.top = '';
+        document.body.style.overflow = '';
+        
+        // Force scroll to top one final time
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: 'auto'
+        });
+        
+        // Add active class to fade-in elements
+        document.querySelectorAll('.fade-in').forEach(element => {
+          element.classList.add('active');
+        });
+      }, 800);
+    });
+
+    // Add this right after the DOMContentLoaded event
+    document.addEventListener('DOMContentLoaded', function() {
+      // Prevent scrolling until content is loaded
+      document.body.style.overflow = 'hidden';
+    });
+
+    // Smooth scroll for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const target = document.querySelector(targetId);
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Add ripple effect to buttons
+    document.querySelectorAll('.cta-button, .feature-card, .nav a').forEach(element => {
+      element.classList.add('ripple');
+    });
+
+    // Enhanced loading animation
+    window.addEventListener('load', function() {
+      const preloader = document.querySelector('.preloader');
+      setTimeout(() => {
+        preloader.classList.add('fade-out');
+        setTimeout(() => {
+          preloader.style.display = 'none';
+          
+          // Trigger animations in sequence
+          const animateElements = [
+            '.zoom-in',
+            '.slide-in-left',
+            '.slide-in-right',
+            '.feature-card',
+            '.stat-item'
+          ];
+          
+          animateElements.forEach((selector, index) => {
+            setTimeout(() => {
+              document.querySelectorAll(selector).forEach(element => {
+                element.classList.add('active');
+              });
+            }, index * 200);
+          });
+        }, 800);
+      }, 500);
+    });
+
+    // Add number counting animation for stats
+    function animateValue(element, start, end, duration) {
+      let startTimestamp = null;
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        element.innerHTML = Math.floor(progress * (end - start) + start);
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      window.requestAnimationFrame(step);
+    }
+
+    // Animate stats when they come into view
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const statNumber = entry.target.querySelector('.stat-number');
+          const endValue = parseInt(statNumber.textContent);
+          animateValue(statNumber, 0, endValue, 2000);
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.stat-item').forEach(stat => {
+      statsObserver.observe(stat);
+    });
+
+    // Add smooth scroll function for Explore Programs button
+    function scrollToCourses(event) {
+      event.preventDefault();
+      const coursesSection = document.getElementById('courses');
+      const headerOffset = 80; // Adjust this value based on your header height
+      const elementPosition = coursesSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+
+    // Update existing smooth scroll code to use the same logic for all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#courses') {
+          scrollToCourses(e);
+        } else {
+          const target = document.querySelector(targetId);
+          if (target) {
+            const headerOffset = 80;
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
+
+    // Remove previous scroll implementations and add this new one
+    document.addEventListener('DOMContentLoaded', function() {
+      // Handle Explore Programs button click
+      const exploreBtn = document.querySelector('.explore-btn');
+      if (exploreBtn) {
+        exploreBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const coursesSection = document.getElementById('courses');
+          if (coursesSection) {
+            // First ensure we're at a good scroll position
+            window.scrollTo(0, 0);
+            
+            // Then scroll to the courses section
+            setTimeout(() => {
+              const headerOffset = 100;
+              const elementPosition = coursesSection.getBoundingClientRect().top;
+              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+              });
+            }, 100);
+          }
+        });
+      }
+
+      // Handle all other anchor links
+      document.querySelectorAll('a[href^="#"]:not(.explore-btn)').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const target = document.querySelector(targetId);
+          
+          if (target) {
+            const headerOffset = 100;
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add classes for enhanced effects
+      document.querySelectorAll('.course-card, .feature-item, .testimonial-card').forEach(element => {
+        element.classList.add('hover-card');
+      });
+
+      document.querySelectorAll('.cta-button').forEach(button => {
+        button.classList.add('glow-button', 'ripple');
+      });
+
+      document.querySelectorAll('.stat-item').forEach(stat => {
+        stat.classList.add('float-animation');
+      });
+
+      document.querySelectorAll('.hero h1, .section h2').forEach(heading => {
+        heading.classList.add('gradient-text');
+      });
+
+      // Initialize intersection observer for animations
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            if (entry.target.classList.contains('shine-effect')) {
+              entry.target.style.animation = 'shine 3s infinite';
+            }
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '50px'
+      });
+
+      // Observe elements for animation
+      document.querySelectorAll('.section, .course-card, .feature-item, .testimonial-card').forEach(element => {
+        observer.observe(element);
+      });
+
+      // Add ripple effect to buttons
+      document.querySelectorAll('.ripple').forEach(element => {
+        element.addEventListener('click', function(e) {
+          const ripple = document.createElement('div');
+          ripple.classList.add('ripple-effect');
+          
+          const rect = element.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          
+          ripple.style.left = x + 'px';
+          ripple.style.top = y + 'px';
+          
+          element.appendChild(ripple);
+          
+          setTimeout(() => {
+            ripple.remove();
+          }, 1000);
+        });
+      });
+
+      // Add parallax effect to hero section
+      const hero = document.querySelector('.hero');
+      if (hero) {
+        hero.classList.add('parallax');
+        window.addEventListener('scroll', () => {
+          const scrolled = window.pageYOffset;
+          hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
+        });
+      }
+    });
+  </script>
+</body>
+</html>
+
+

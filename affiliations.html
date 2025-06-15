@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Load site configuration -->
+    <script src="config.js"></script>
+    <script>
+        // Function to update meta tags using config
+        function updateMetaTags() {
+            const config = window.siteConfig;
+            const pageName = "Industry Affiliations & Partners";
+            
+            // Update title and meta tags
+            document.title = `${pageName} | ${config.orgName} B.Voc Programs`;
+            document.querySelector('meta[name="title"]').content = `${pageName} | ${config.orgName} B.Voc Programs`;
+            document.querySelector('meta[name="description"]').content = `Discover ${config.orgName}'s industry partnerships and affiliations. Learn about our collaborations with leading companies for internships, training, and placements.`;
+            document.querySelector('meta[name="keywords"]').content = `industry partnerships, B.Voc affiliations, ${config.orgName} partners, industry collaboration, vocational training partners`;
+            
+            // Update Open Graph tags
+            document.querySelector('meta[property="og:url"]').content = `${config.websiteUrl}/affiliations.html`;
+            document.querySelector('meta[property="og:title"]').content = `${pageName} | ${config.orgName}`;
+            document.querySelector('meta[property="og:description"]').content = `Discover ${config.orgName}'s industry partnerships and affiliations. Strong industry connections for better career opportunities.`;
+            document.querySelector('meta[property="og:image"]').content = `${config.websiteUrl}${config.logoPath}`;
+            
+            // Update Twitter Card tags
+            document.querySelector('meta[property="twitter:url"]').content = `${config.websiteUrl}/affiliations.html`;
+            document.querySelector('meta[property="twitter:title"]').content = `${pageName} | ${config.orgName}`;
+            document.querySelector('meta[property="twitter:description"]').content = `Discover ${config.orgName}'s industry partnerships and affiliations. Strong industry connections for better career opportunities.`;
+            document.querySelector('meta[property="twitter:image"]').content = `${config.websiteUrl}${config.logoPath}`;
+            
+            // Update theme color
+            document.querySelector('meta[name="theme-color"]').content = config.seo.themeColor;
+            document.querySelector('meta[name="msapplication-TileColor"]').content = config.seo.themeColor;
+            
+            // Update Schema.org data
+            const schemaScript = document.querySelector('script[type="application/ld+json"]');
+            const schemaData = JSON.parse(schemaScript.textContent);
+            schemaData.name = config.orgFullName;
+            schemaData.url = config.websiteUrl;
+            schemaData.logo = `${config.websiteUrl}${config.logoPath}`;
+            schemaData.description = `${config.orgName}'s industry partnerships and affiliations for B.Voc programs`;
+            schemaScript.textContent = JSON.stringify(schemaData, null, 2);
+        }
+        
+        // Update meta tags when the page loads
+        document.addEventListener('DOMContentLoaded', updateMetaTags);
+    </script>
+    
+    <!-- Primary Meta Tags -->
+    <title>Loading...</title>
+    <meta name="title" content="Loading...">
+    <meta name="description" content="Loading...">
+    <meta name="keywords" content="Loading...">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:title" content="Loading...">
+    <meta property="og:description" content="Loading...">
+    <meta property="og:image" content="">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="">
+    <meta property="twitter:title" content="Loading...">
+    <meta property="twitter:description" content="Loading...">
+    <meta property="twitter:image" content="">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#2563eb">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#2563eb">
+    <meta name="msapplication-TileColor" content="#2563eb">
+    
+    <!-- Fonts and Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/affiliations.css">
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Loading...",
+      "url": "",
+      "logo": "",
+      "description": "Loading..."
+    }
+    </script>
+</head>
+<body>
+    <header class="header">
+        <h1>Affiliations and Industry</h1>
+        <p>Explore our partnerships and industry connections</p>
+    </header>
+
+    <nav class="nav">
+        <a href="index.html">Home</a>
+        <!-- <a href="#partners">Industry Partners</a> -->
+        <a href="#affiliations">Affiliations</a>
+    </nav>
+
+    <main>
+        <section class="section" id="affiliations">
+            <h2 class="section-title">Affiliations & Certifications</h2>
+            <div class="grid">
+                <div class="card" data-certificate="ugc-letter">
+                    <img src="IMG/Certificate1.png" alt="UGC Letter">
+                    <div class="card-title">UGC Letter</div>
+                </div>
+                <div class="card" data-certificate="ugc-equivalence">
+                    <img src="IMG/Certificate2.png" alt="UGC Equivalence letter">
+                    <div class="card-title">UGC Equivalence letter</div>
+                </div>
+                <div class="card" data-certificate="training">
+                    <img src="IMG/Certificate3.png" alt="Training Certificate">
+                    <div class="card-title">Training Partnership Certificate</div>
+                </div>
+                <div class="card" data-certificate="incorporation">
+                    <img src="IMG/Certificate4.png" alt="Certificate of Incorporation">
+                    <div class="card-title">Certificate of Incorporation</div>
+                </div>
+                <div class="card" data-certificate="udyam">
+                    <img src="IMG/Certificate5.png" alt="Udyam Registration">
+                    <div class="card-title">Udyam Registration Certificate</div>
+                </div>
+                <div class="card" data-certificate="startup">
+                    <img src="IMG/Startup Certificate.png" alt="Startup Certificate">
+                    <div class="card-title">Startup Certificate</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- <section class="section" id="partners">
+            <h2 class="section-title">Our Industry Partner's & Recruiters</h2>
+            <div class="logo-carousel">
+                <button class="nav-button prev" aria-label="Previous">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="nav-button next" aria-label="Next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="logo-container" aria-live="polite">
+                    <div class="logo-item" role="img" aria-label="Laurel Wires Ltd">
+                        <img src="Logos/Laurel Wires.png" alt="Laurel Wires Ltd" />
+                        <div class="logo-name">Laurel Wires Ltd</div>
+                    </div>
+                    <div class="logo-item" role="img" aria-label="Nexgies">
+                        <img src="Logos/Nexgies.png" alt="Nexgies" />
+                        <div class="logo-name">Nexgies</div>
+                    </div>
+                    <div class="logo-item" role="img" aria-label="Variant">
+                        <img src="Logos/variant_logo.png" alt="Variant" />
+                        <div class="logo-name">Nexgies</div>
+                    </div>
+                     <div class="logo-item" role="img" aria-label="Apple">
+                        <i class="fab fa-apple"></i>
+                        <div class="logo-name">Apple</div>
+                    </div> -->
+                    <!-- <div class="logo-item" role="img" aria-label="Google">
+                        <i class="fab fa-google"></i>
+                        <div class="logo-name">Google</div>
+                    </div>
+                    <div class="logo-item" role="img" aria-label="Amazon">
+                        <i class="fab fa-amazon"></i>
+                        <div class="logo-name">Amazon</div>
+                    </div>
+                    <div class="logo-item" role="img" aria-label="Facebook">
+                        <i class="fab fa-facebook"></i>
+                        <div class="logo-name">Facebook</div>
+                    </div>
+                    <div class="logo-item" role="img" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                        <div class="logo-name">Twitter</div>
+                    </div> -->
+                    <!-- <div class="logo-item" role="img" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                        <div class="logo-name">YouTube</div>
+                    </div> -->
+                    <!-- <div class="logo-item" role="img" aria-label="Spotify">
+                        <i class="fab fa-spotify"></i>
+                        <div class="logo-name">Spotify</div>
+                    </div> --> 
+                <!-- </div>
+                <div class="progress-dots"></div>
+            </div>
+        </section>  -->
+    </main>
+
+    <!-- Certificate Modal -->
+    <div id="certificateModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" class="modal-img" src="" alt="">
+            <div class="modal-loading"></div>
+        </div>
+        <button class="modal-nav modal-prev" aria-label="Previous certificate">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="modal-nav modal-next" aria-label="Next certificate">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="zoom-controls">
+            <button class="zoom-btn" id="zoomOut" data-tooltip="Zoom Out">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button class="zoom-btn" id="zoomReset" data-tooltip="Reset Zoom">
+                <i class="fas fa-sync-alt"></i>
+            </button>
+            <button class="zoom-btn" id="zoomIn" data-tooltip="Zoom In">
+                <i class="fas fa-plus"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const logoCarousel = document.querySelector('.logo-carousel');
+            const logoContainer = document.querySelector('.logo-container');
+            const logoItems = document.querySelectorAll('.logo-item');
+            const prevButton = document.querySelector('.nav-button.prev');
+            const nextButton = document.querySelector('.nav-button.next');
+            const progressDots = document.querySelector('.progress-dots');
+            
+            let currentIndex = 0;
+            let startX = 0;
+            let currentX = 0;
+            let isDragging = false;
+            let isScrolling = false;
+            let autoScrollInterval;
+            const itemWidth = 200; // Width (180px) + margins (2 * 10px)
+            const cloneCount = 2; // Number of items to clone on each side
+            let originalItemCount = logoItems.length;
+            
+            // Clone items for infinite scroll
+            function setupInfiniteScroll() {
+                // Remove any existing clones
+                logoContainer.querySelectorAll('.clone').forEach(clone => clone.remove());
+                
+                // Clone beginning items and append to end
+                for (let i = 0; i < cloneCount; i++) {
+                    const clone = logoItems[i].cloneNode(true);
+                    clone.setAttribute('aria-hidden', 'true');
+                    clone.classList.add('clone');
+                    logoContainer.appendChild(clone);
+                }
+                
+                // Clone end items and prepend to beginning
+                for (let i = logoItems.length - 1; i >= logoItems.length - cloneCount; i--) {
+                    const clone = logoItems[i].cloneNode(true);
+                    clone.setAttribute('aria-hidden', 'true');
+                    clone.classList.add('clone');
+                    logoContainer.insertBefore(clone, logoContainer.firstChild);
+                }
+                
+                // Set initial position
+                currentIndex = cloneCount;
+                updateCarousel(false);
+            }
+            
+            function shouldEnableCarousel() {
+                const containerWidth = logoContainer.scrollWidth / (1 + (2 * cloneCount / originalItemCount));
+                return containerWidth > logoCarousel.offsetWidth;
+            }
+            
+            function updateCarouselState() {
+                const shouldEnable = shouldEnableCarousel();
+                
+                prevButton.style.display = shouldEnable ? 'flex' : 'none';
+                nextButton.style.display = shouldEnable ? 'flex' : 'none';
+                progressDots.style.display = shouldEnable ? 'flex' : 'none';
+                
+                logoContainer.style.transition = 'none';
+                
+                if (!shouldEnable) {
+                    // Center all items if carousel not needed
+                    logoContainer.style.transform = 'translateX(0)';
+                    logoContainer.style.position = 'relative';
+                    logoContainer.style.left = '0';
+                    logoContainer.style.justifyContent = 'center';
+                    stopAutoScroll();
+                } else {
+                    logoContainer.style.position = 'absolute';
+                    logoContainer.style.justifyContent = 'flex-start';
+                    requestAnimationFrame(() => {
+                        updateCarousel(false);
+                    });
+                }
+            }
+            
+            function updateCarousel(animate = true) {
+                if (!shouldEnableCarousel()) {
+                    updateCarouselState();
+                    return;
+                }
+                
+                const carouselWidth = logoCarousel.offsetWidth;
+                const centerOffset = (carouselWidth - itemWidth) / 2;
+                const baseTranslate = -currentIndex * itemWidth;
+                const translateX = baseTranslate + centerOffset;
+                
+                requestAnimationFrame(() => {
+                    // Set transition before transform for smooth animation
+                    logoContainer.style.transition = animate ? 'transform 0.5s ease' : 'none';
+                    logoContainer.style.transform = `translateX(${translateX}px)`;
+                    
+                    // Update items visibility and scaling
+                    const allItems = logoContainer.querySelectorAll('.logo-item');
+                    allItems.forEach((item, index) => {
+                        const distance = Math.abs(index - currentIndex);
+                        item.classList.toggle('center', distance === 0);
+                        item.classList.toggle('adjacent', distance === 1);
+                    });
+                    
+                    updateDots();
+                    
+                    // Reset transition after animation completes
+                    if (animate) {
+                        setTimeout(() => {
+                            logoContainer.style.transition = 'none';
+                        }, 500);
+                    }
+                });
+            }
+            
+            function resetToRealItem(animate = false) {
+                const allItems = logoContainer.querySelectorAll('.logo-item');
+                let needsReset = false;
+                let newIndex = currentIndex;
+                
+                if (currentIndex >= allItems.length - cloneCount) {
+                    newIndex = cloneCount;
+                    needsReset = true;
+                } else if (currentIndex < cloneCount) {
+                    newIndex = allItems.length - cloneCount * 2;
+                    needsReset = true;
+                }
+                
+                if (needsReset) {
+                    requestAnimationFrame(() => {
+                        logoContainer.style.transition = 'none';
+                        currentIndex = newIndex;
+                        updateCarousel(false);
+                        
+                        // Re-enable transitions after the reset
+                        requestAnimationFrame(() => {
+                            logoContainer.style.transition = animate ? 
+                                'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)' : 'none';
+                        });
+                    });
+                }
+            }
+            
+            function updateDots() {
+                const dots = document.querySelectorAll('.dot');
+                const normalizedIndex = ((currentIndex - cloneCount) % originalItemCount + originalItemCount) % originalItemCount;
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === normalizedIndex);
+                });
+            }
+            
+            function navigateToIndex(index, animate = true) {
+                if (isScrolling || !shouldEnableCarousel()) return;
+                isScrolling = true;
+                stopAutoScroll();
+                
+                currentIndex = index;
+                updateCarousel(animate);
+                
+                setTimeout(() => {
+                    isScrolling = false;
+                    resetToRealItem(animate);
+                    if (shouldEnableCarousel()) {
+                        startAutoScroll();
+                    }
+                }, 500);
+            }
+            
+            // Improved drag handling
+            function handleDragStart(e) {
+                if (!shouldEnableCarousel()) return;
+                isDragging = true;
+                startX = e.type === 'mousedown' ? e.pageX : e.touches[0].pageX;
+                currentX = startX;
+                stopAutoScroll();
+                
+                logoCarousel.style.cursor = 'grabbing';
+                logoContainer.style.transition = 'none';
+            }
+            
+            function handleDragMove(e) {
+                if (!isDragging || !shouldEnableCarousel()) return;
+                e.preventDefault();
+                
+                const x = e.type === 'mousemove' ? e.pageX : e.touches[0].pageX;
+                const diff = x - currentX;
+                currentX = x;
+                
+                const carouselWidth = logoCarousel.offsetWidth;
+                const centerOffset = (carouselWidth - itemWidth) / 2;
+                const currentTranslate = -currentIndex * itemWidth + centerOffset;
+                const targetTranslate = currentTranslate + diff;
+                
+                requestAnimationFrame(() => {
+                    logoContainer.style.transform = `translateX(${targetTranslate}px)`;
+                });
+            }
+            
+            function handleDragEnd() {
+                if (!isDragging || !shouldEnableCarousel()) return;
+                isDragging = false;
+                
+                logoCarousel.style.cursor = 'grab';
+                
+                const dragDistance = currentX - startX;
+                const threshold = itemWidth * 0.2; // 20% of item width
+                
+                if (Math.abs(dragDistance) > threshold) {
+                    navigate(dragDistance > 0 ? -1 : 1);
+                } else {
+                    updateCarousel(true);
+                }
+                
+                if (shouldEnableCarousel()) {
+                    startAutoScroll();
+                }
+            }
+            
+            function startAutoScroll() {
+                if (!shouldEnableCarousel()) return;
+                if (autoScrollInterval) clearInterval(autoScrollInterval);
+                autoScrollInterval = setInterval(() => {
+                    if (!isDragging) {
+                        navigate(1);
+                    }
+                }, 3000);
+            }
+            
+            function stopAutoScroll() {
+                if (autoScrollInterval) {
+                    clearInterval(autoScrollInterval);
+                    autoScrollInterval = null;
+                }
+            }
+            
+            function navigate(direction) {
+                if (!shouldEnableCarousel()) return;
+                const newIndex = currentIndex + direction;
+                navigateToIndex(newIndex);
+            }
+            
+            // Initialize
+            function init() {
+                createProgressDots();
+                setupInfiniteScroll();
+                
+                // Ensure proper initial state
+                requestAnimationFrame(() => {
+                    logoContainer.style.transition = 'none';
+                    updateCarouselState();
+                    
+                    // Start with first item after a brief delay
+                    setTimeout(() => {
+                        if (shouldEnableCarousel()) {
+                            currentIndex = cloneCount;
+                            updateCarousel(false);
+                            startAutoScroll();
+                        }
+                    }, 100);
+                });
+                
+                // Event listeners
+                prevButton?.addEventListener('click', () => navigate(-1));
+                nextButton?.addEventListener('click', () => navigate(1));
+                
+                // Mouse events
+                logoCarousel.addEventListener('mousedown', handleDragStart);
+                window.addEventListener('mousemove', handleDragMove);
+                window.addEventListener('mouseup', handleDragEnd);
+                
+                // Touch events
+                logoCarousel.addEventListener('touchstart', handleDragStart, { passive: true });
+                window.addEventListener('touchmove', handleDragMove, { passive: false });
+                window.addEventListener('touchend', handleDragEnd);
+                
+                // Mouse enter/leave
+                logoCarousel.addEventListener('mouseenter', stopAutoScroll);
+                logoCarousel.addEventListener('mouseleave', () => {
+                    if (shouldEnableCarousel()) {
+                        startAutoScroll();
+                    }
+                });
+                
+                // Window resize with debouncing
+                let resizeTimeout;
+                window.addEventListener('resize', () => {
+                    if (resizeTimeout) {
+                        cancelAnimationFrame(resizeTimeout);
+                    }
+                    resizeTimeout = requestAnimationFrame(() => {
+                        updateCarouselState();
+                    });
+                });
+            }
+            
+            // Start the carousel
+            init();
+            
+            // Cleanup
+            window.addEventListener('beforeunload', () => {
+                stopAutoScroll();
+                window.removeEventListener('mousemove', handleDragMove);
+                window.removeEventListener('mouseup', handleDragEnd);
+                window.removeEventListener('touchmove', handleDragMove);
+                window.removeEventListener('touchend', handleDragEnd);
+            });
+        });
+
+        // Modal functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('certificateModal');
+            const modalImg = document.getElementById('modalImage');
+            const closeBtn = document.querySelector('.close-modal');
+            const cards = document.querySelectorAll('.card[data-certificate]');
+            const prevBtn = modal.querySelector('.modal-prev');
+            const nextBtn = modal.querySelector('.modal-next');
+            let currentZoom = 1;
+            let currentCardIndex = 0;
+            let isDragging = false;
+            let startX = 0;
+            let startY = 0;
+            let translateX = 0;
+            let translateY = 0;
+
+            function showLoading() {
+                modal.classList.add('loading');
+            }
+
+            function hideLoading() {
+                modal.classList.remove('loading');
+            }
+
+            function updateModalImage(index) {
+                const card = cards[index];
+                const imgSrc = card.querySelector('img').src;
+                showLoading();
+                
+                modalImg.onload = () => {
+                    hideLoading();
+                    currentCardIndex = index;
+                    updateNavButtons();
+                };
+                
+                modalImg.src = imgSrc;
+                modalImg.alt = card.querySelector('.card-title').textContent;
+            }
+
+            function updateNavButtons() {
+                prevBtn.style.display = currentCardIndex > 0 ? 'flex' : 'none';
+                nextBtn.style.display = currentCardIndex < cards.length - 1 ? 'flex' : 'none';
+            }
+
+            // Open modal
+            cards.forEach((card, index) => {
+                card.addEventListener('click', function() {
+                    modal.style.display = 'block';
+                    requestAnimationFrame(() => {
+                        modal.classList.add('active');
+                        updateModalImage(index);
+                    });
+                });
+            });
+
+            // Navigation
+            prevBtn.addEventListener('click', () => {
+                if (currentCardIndex > 0) {
+                    updateModalImage(currentCardIndex - 1);
+                }
+            });
+
+            nextBtn.addEventListener('click', () => {
+                if (currentCardIndex < cards.length - 1) {
+                    updateModalImage(currentCardIndex + 1);
+                }
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (modal.style.display === 'block') {
+                    switch(e.key) {
+                        case 'Escape':
+                            closeBtn.click();
+                            break;
+                        case 'ArrowLeft':
+                            if (currentCardIndex > 0) {
+                                updateModalImage(currentCardIndex - 1);
+                            }
+                            break;
+                        case 'ArrowRight':
+                            if (currentCardIndex < cards.length - 1) {
+                                updateModalImage(currentCardIndex + 1);
+                            }
+                            break;
+                        case '+':
+                            document.getElementById('zoomIn').click();
+                            break;
+                        case '-':
+                            document.getElementById('zoomOut').click();
+                            break;
+                        case '0':
+                            document.getElementById('zoomReset').click();
+                            break;
+                    }
+                }
+            });
+
+            // Close modal
+            closeBtn.addEventListener('click', () => {
+                modal.classList.remove('active');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    modalImg.src = '';
+                    resetZoom();
+                }, 300);
+            });
+
+            // Close on outside click
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeBtn.click();
+                }
+            });
+
+            // Zoom controls
+            function updateZoom() {
+                modalImg.style.transform = `scale(${currentZoom}) translate(${translateX}px, ${translateY}px)`;
+            }
+
+            function resetZoom() {
+                currentZoom = 1;
+                translateX = 0;
+                translateY = 0;
+                updateZoom();
+            }
+
+            document.getElementById('zoomIn').addEventListener('click', () => {
+                currentZoom = Math.min(currentZoom + 0.2, 3);
+                updateZoom();
+            });
+
+            document.getElementById('zoomOut').addEventListener('click', () => {
+                currentZoom = Math.max(currentZoom - 0.2, 0.5);
+                updateZoom();
+            });
+
+            document.getElementById('zoomReset').addEventListener('click', resetZoom);
+
+            // Pan functionality
+            modalImg.addEventListener('mousedown', (e) => {
+                if (currentZoom > 1) {
+                    isDragging = true;
+                    startX = e.clientX - translateX;
+                    startY = e.clientY - translateY;
+                    modalImg.style.cursor = 'grabbing';
+                }
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                if (isDragging) {
+                    translateX = e.clientX - startX;
+                    translateY = e.clientY - startY;
+                    updateZoom();
+                }
+            });
+
+            window.addEventListener('mouseup', () => {
+                isDragging = false;
+                modalImg.style.cursor = currentZoom > 1 ? 'grab' : 'default';
+            });
+
+            // Mouse wheel zoom
+            modalImg.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                if (e.deltaY < 0) {
+                    currentZoom = Math.min(currentZoom + 0.1, 3);
+                } else {
+                    currentZoom = Math.max(currentZoom - 0.1, 0.5);
+                }
+                updateZoom();
+            });
+        });
+    </script>
+</body>
+</html> 

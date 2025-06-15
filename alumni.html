@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!-- Load site configuration -->
+  <script src="config.js"></script>
+  <script>
+    // Function to update meta tags using config
+    function updateMetaTags() {
+      const config = window.siteConfig;
+      const pageName = "Alumni Network";
+      
+      // Update title and meta tags
+      document.title = `${pageName} | ${config.orgName} B.Voc Programs`;
+      document.querySelector('meta[name="title"]').content = `${pageName} | ${config.orgName} B.Voc Programs`;
+      document.querySelector('meta[name="description"]').content = `Connect with ${config.orgName}'s B.Voc alumni network. Discover success stories, career paths, and networking opportunities with our graduates.`;
+      document.querySelector('meta[name="keywords"]').content = `${config.orgName} alumni, B.Voc graduates, alumni network, success stories, career paths, vocational education alumni`;
+      
+      // Update Open Graph tags
+      document.querySelector('meta[property="og:url"]').content = `${config.websiteUrl}/alumni.html`;
+      document.querySelector('meta[property="og:title"]').content = `${pageName} | ${config.orgName}`;
+      document.querySelector('meta[property="og:description"]').content = `Connect with ${config.orgName}'s B.Voc alumni network. Discover success stories and networking opportunities.`;
+      document.querySelector('meta[property="og:image"]').content = `${config.websiteUrl}${config.logoPath}`;
+      
+      // Update Twitter Card tags
+      document.querySelector('meta[property="twitter:url"]').content = `${config.websiteUrl}/alumni.html`;
+      document.querySelector('meta[property="twitter:title"]').content = `${pageName} | ${config.orgName}`;
+      document.querySelector('meta[property="twitter:description"]').content = `Connect with ${config.orgName}'s B.Voc alumni network. Discover success stories and networking opportunities.`;
+      document.querySelector('meta[property="twitter:image"]').content = `${config.websiteUrl}${config.logoPath}`;
+      
+      // Update theme color
+      document.querySelector('meta[name="theme-color"]').content = config.seo.themeColor;
+      document.querySelector('meta[name="msapplication-TileColor"]').content = config.seo.themeColor;
+      
+      // Update Schema.org data
+      const schemaScript = document.querySelector('script[type="application/ld+json"]');
+      const schemaData = JSON.parse(schemaScript.textContent);
+      schemaData.name = `${config.orgName} Alumni Network`;
+      schemaData.description = `Alumni network and success stories from ${config.orgName}'s B.Voc programs`;
+      schemaData.provider.name = config.orgFullName;
+      schemaData.provider.url = config.websiteUrl;
+      schemaData.isPartOf.name = `${config.orgName} B.Voc Programs`;
+      schemaData.isPartOf.url = config.websiteUrl;
+      schemaScript.textContent = JSON.stringify(schemaData, null, 2);
+    }
+    
+    // Update meta tags when the page loads
+    document.addEventListener('DOMContentLoaded', updateMetaTags);
+  </script>
+  
+  <!-- Primary Meta Tags -->
+  <title>Loading...</title>
+  <meta name="title" content="Loading...">
+  <meta name="description" content="Loading...">
+  <meta name="keywords" content="Loading...">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="">
+  <meta property="og:title" content="Loading...">
+  <meta property="og:description" content="Loading...">
+  <meta property="og:image" content="">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="">
+  <meta property="twitter:title" content="Loading...">
+  <meta property="twitter:description" content="Loading...">
+  <meta property="twitter:image" content="">
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/favicon/site.webmanifest">
+  <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#2563eb">
+  
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  
+  <!-- Fonts and Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="styles/alumni.css">
+
+  <!-- Schema.org markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Loading...",
+    "description": "Loading...",
+    "provider": {
+      "@type": "EducationalOrganization",
+      "name": "Loading...",
+      "url": ""
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Alumni Network"
+    },
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Loading...",
+      "url": ""
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- Add loader at the start of body -->
+  <div class="loader-wrapper">
+    <div class="loader"></div>
+  </div>
+  <header>
+    <h1>Alumni Network</h1>
+    <p>Celebrating the success of our graduates</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="#success-stories">Success Stories</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#connect">Connect</a>
+  </nav>
+
+  <div class="container">
+    <section class="section">
+      <h2>Alumni Impact</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">5000+</div>
+          <p>Alumni Worldwide</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">90%</div>
+          <p>Placement Rate</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">100+</div>
+          <p>Countries</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">200+</div>
+          <p>Partner Companies</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="success-stories">
+      <h2>Success Stories</h2>
+      <div class="success-stories">
+        <div class="story-card">
+          <img src="IMG/Glocal.webp" alt="Alumni Success Story" class="story-image">
+          <div class="story-content">
+            <h3 class="story-title">John Smith</h3>
+            <p class="story-company">Senior Developer at Google</p>
+            <p>Graduated in 2020 with B.Voc in Software Development. Currently leading a team of developers at Google.</p>
+          </div>
+        </div>
+        <div class="story-card">
+          <img src="IMG/Glocal.webp" alt="Alumni Success Story" class="story-image">
+          <div class="story-content">
+            <h3 class="story-title">Sarah Johnson</h3>
+            <p class="story-company">Healthcare Manager at Apollo</p>
+            <p>2019 graduate from Healthcare Management. Now managing operations at Apollo Hospitals.</p>
+          </div>
+        </div>
+        <div class="story-card">
+          <img src="IMG/Glocal.webp" alt="Alumni Success Story" class="story-image">
+          <div class="story-content">
+            <h3 class="story-title">Mike Chen</h3>
+            <p class="story-company">Founder & CEO at TechStart</p>
+            <p>2018 graduate who started his own successful tech startup after completing B.Voc.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="testimonials">
+      <h2>Alumni Testimonials</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="Alumni" class="testimonial-image">
+            <div class="testimonial-info">
+              <h4>Emily White</h4>
+              <p>Class of 2021</p>
+            </div>
+          </div>
+          <p class="testimonial-quote">"The B.Voc program provided me with practical skills that were immediately applicable in my career. The industry exposure was invaluable."</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Alumni" class="testimonial-image">
+            <div class="testimonial-info">
+              <h4>David Kumar</h4>
+              <p>Class of 2020</p>
+            </div>
+          </div>
+          <p class="testimonial-quote">"The hands-on training and industry partnerships helped me secure my dream job. I'm grateful for the opportunities provided."</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section" id="connect">
+      <h2>Join Our Alumni Network</h2>
+      <p>Stay connected with your alma mater and fellow graduates</p>
+      <a href="#" class="cta-button">Register Now</a>
+    </section>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Loader Animation
+      const loaderWrapper = document.querySelector('.loader-wrapper');
+      setTimeout(() => {
+        loaderWrapper.classList.add('fade-out');
+        setTimeout(() => {
+          loaderWrapper.style.display = 'none';
+        }, 1000);
+      }, 2500);
+
+      // Animation observer
+      const animateElements = document.querySelectorAll('.section, .alumni-card, .testimonial, .achievement, .gallery-item');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Add small delay before starting animation
+            setTimeout(() => {
+              entry.target.classList.add('visible');
+            }, 100);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.2,
+        rootMargin: '50px'
+      });
+
+      // Observe all animated elements
+      animateElements.forEach(element => {
+        observer.observe(element);
+      });
+
+      // Set animation order for staggered elements
+      ['alumni-card', 'achievement', 'gallery-item'].forEach(className => {
+        document.querySelectorAll('.' + className).forEach((item, index) => {
+          item.style.setProperty('--animation-order', index + 1);
+        });
+      });
+
+      // Add hover effect to social links
+      document.querySelectorAll('.social-links a').forEach(link => {
+        link.addEventListener('mouseenter', function() {
+          this.style.transform = 'scale(1.2) rotate(360deg)';
+          this.style.transition = 'all 0.4s ease';
+        });
+
+        link.addEventListener('mouseleave', function() {
+          this.style.transform = 'scale(1) rotate(0deg)';
+        });
+      });
+    });
+  </script>
+</body>
+</html> 

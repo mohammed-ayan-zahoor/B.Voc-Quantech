@@ -1,0 +1,1277 @@
+/* styles/aicvps.css */
+
+/* Variables from :root in index.css */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --text-color: #2c3e50;
+    --light-bg: #f8f9fa;
+    --white: #ffffff;
+    --border-color: rgba(0, 0, 0, 0.1);
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --header-height: 60px;
+    --container-padding: 1.5rem;
+    --grid-gap: 1.5rem;
+}
+
+/* Base styles from index.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent; /* Prevents blue box on tap */
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Assuming Poppins is linked in HTML */
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--light-bg);
+    font-size: 16px;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    /* overflow-x: hidden; */ /* Consider adding this if horizontal scroll issues persist, but body styles from index.css didn't have it globally */
+}
+
+/* Container for consistent padding and max-width */
+.container {
+    padding: 0 var(--container-padding);
+    margin: 0 auto;
+    max-width: 1200px; /* Adjust as needed */
+}
+
+/* Header styles from index.css, modified for AICVPS */
+header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background-size: 200% 200%;
+    animation: gradientFlow 15s ease infinite;
+    color: var(--white);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: relative;
+    display: flex; /* Use flexbox for centering */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+}
+
+.header-content {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center content within max-width */
+}
+
+/* Hide the logo for this specific page */
+.header-logo {
+    display: none;
+}
+
+/* Styles for the header text, centered */
+.header-text {
+    flex-grow: 1; /* Allow text to take up available space */
+    text-align: center; /* Center the text */
+}
+
+header h1 {
+    animation: fadeInUp 1s ease-out;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.2;
+    text-align: center; /* Ensure h1 itself is centered */
+    /* Add explicit visibility properties */
+    opacity: 1 !important; /* Ensure h1 is fully opaque */
+    visibility: visible !important; /* Ensure h1 is visible */
+    /* Remove the solid border and add fading border-image */
+    /* border-bottom: 2px solid var(--white); */ /* REMOVE this line */
+    /* padding-bottom: 5px; */ /* REMOVE this line */
+    display: inline-block; /* Important: Keep inline-block to wrap the content */
+    /* margin-bottom: 5px; */ /* REMOVE this line */
+
+    /* Add the fading border using border-image */
+    border-width: 0 0 2px 0; /* Set border thickness for bottom only */
+    border-style: solid; /* border-image requires a border-style */
+    border-image: linear-gradient(to right, transparent, var(--white), transparent) 1; /* The fading gradient */
+    padding-bottom: 5px; /* Space between text and border-image */
+    margin-bottom: 5px; /* Space below the border-image */
+}
+
+header p {
+    animation: fadeInUp 1s ease-out 0.3s backwards;
+    font-size: 1rem;
+    opacity: 0.9;
+    margin: 0.5rem 0 0 0;
+    text-align: center; /* Ensure paragraph is centered */
+}
+
+/* Responsive Header styles */
+@media (max-width: 992px) {
+    header h1 {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 0.8rem 1.5rem;
+    }
+
+    header h1 {
+        font-size: 1.4rem;
+    }
+
+    header p {
+        font-size: 0.9rem;
+    }
+
+    /* Ensure section titles are centered on small screens */
+    .section-title {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1.5rem;
+    }
+
+    .section h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 0.5rem auto 0;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 0.8rem 1rem;
+    }
+
+    .header-content {
+      /* Removed flex-direction column and align-items center as logo is hidden
+         and text-align center is used on header-text and h1/p */
+      gap: 0.8rem;
+    }
+
+    header h1 {
+        font-size: 1.2rem;
+    }
+
+    header p {
+        font-size: 0.85rem;
+    }
+
+    /* Ensure section titles are centered on extra small screens */
+    .section-title {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1rem;
+    }
+
+     .section h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 0.4rem auto 0;
+    }
+}
+
+@media (max-width: 360px) {
+    header h1 {
+        font-size: 1.1rem;
+    }
+}
+
+/* Navigation styles from index.css */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--white);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: center;
+    padding: 0.4rem;
+}
+
+nav a {
+    color: var(--primary-color);
+    padding: 0.6rem 1rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 5px;
+    font-size: 0.95rem;
+}
+
+nav a:hover {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    transform: translateY(-2px);
+    animation: pulse 0.4s ease-in-out;
+}
+
+/* Mobile navigation toggle styles */
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.nav-toggle {
+    display: none; /* Hidden by default on larger screens */
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--primary-color);
+    padding: 0.5rem;
+    z-index: 1100; /* Ensure it's above nav links */
+    transition: color 0.3s ease;
+}
+
+.nav-toggle:hover {
+    color: var(--secondary-color);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Hamburger icon specific styles */
+.fa-bars:before {
+    content: '\f0c9'; /* FontAwesome bars icon */
+}
+
+/* Mobile styles for navigation */
+@media (max-width: 768px) {
+    nav {
+      padding: 0.8rem 1rem; /* Adjust padding */
+    }
+
+    .nav-container {
+        justify-content: flex-end; /* Push toggle to the right */
+    }
+
+    .nav-toggle {
+        display: block; /* Show toggle on small screens */
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0; /* Adjust based on header height if needed, otherwise full height */
+        right: -100%; /* Start off-screen to the right */
+        width: 250px; /* Width of the slide-in menu */
+        max-width: 75%; /* Prevent menu from being too wide on very small screens */
+        height: 100vh;
+        background-color: var(--primary-color); /* Dark background for menu */
+        box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+        flex-direction: column;
+        padding: 6rem 1.5rem 1.5rem; /* Padding inside the menu */
+        gap: 1.5rem;
+        transition: right 0.4s ease-in-out; /* Slide animation */
+        z-index: 1050; /* Below the toggle, above page content */
+        overflow-y: auto; /* Enable scrolling for long menus */
+    }
+
+    .nav-links.active {
+        right: 0; /* Slide into view */
+    }
+
+    nav a {
+        color: var(--white); /* White links on dark background */
+        padding: 1rem; /* Larger padding for touch targets */
+        border-bottom: 1px solid rgba(255,255,255,0.1); /* Separator */
+        font-size: 1.1rem;
+        width: 100%; /* Make links full width */
+        text-align: left;
+    }
+
+    nav a:last-child {
+        border-bottom: none; /* No border on the last link */
+    }
+
+    /* Animation for links sliding in */
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    /* Apply animation to links when menu is active */
+    .nav-links.active a {
+        animation: slideIn 0.5s ease-out forwards;
+        /* Staggered animation delays - adjust based on the number of links */
+        /* You have 7 links, so these delays are correct from index.css */
+        /* If you add/remove links, you'll need to update these */
+    }
+    .nav-links.active a:nth-child(1) { animation-delay: 0.1s; }
+    .nav-links.active a:nth-child(2) { animation-delay: 0.2s; }
+    .nav-links.active a:nth-child(3) { animation-delay: 0.3s; }
+    .nav-links.active a:nth-child(4) { animation-delay: 0.4s; }
+    .nav-links.active a:nth-child(5) { animation-delay: 0.5s; }
+    .nav-links.active a:nth-child(6) { animation-delay: 0.6s; }
+    .nav-links.active a:nth-child(7) { animation-delay: 0.7s; }
+
+    /* Styles for the active link */
+    .nav-links a.active {
+        background-color: var(--secondary-color);
+        color: var(--white);
+    }
+}
+
+/* Hide mobile toggle when menu is open, if needed */
+.nav-toggle[aria-expanded="true"] {
+    /* You might want to change the icon or color here when active */
+    color: var(--secondary-color); /* Example: change color */
+}
+
+/* Animation Keyframes from index.css */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Section styles for general page content */
+.section {
+    padding: 3rem var(--container-padding);
+    margin: 0 auto;
+    max-width: 1200px;
+    /* Remove opacity and transform if not using scroll-based visibility animation */
+    /* opacity: 0; */
+    /* transform: translateY(20px); */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    margin-bottom: 2rem;
+}
+
+/* If using scroll-based visibility animation */
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Heading styles for sections */
+/* Update these rules to match the desired style from index.css */
+.section h2 {
+    font-size: 2rem; /* Ensure consistent font size */
+    font-weight: 700; /* Ensure consistent font weight */
+    color: var(--primary-color); /* Ensure consistent color */
+    text-align: center; /* Ensure consistent text alignment */
+    margin-bottom: 2rem; /* Match margin from index.css */
+    padding-bottom: 1rem; /* Add padding-bottom for space above the underline */
+    position: relative; /* Keep relative positioning */
+    display: block; /* Keep display block */
+}
+
+.section h2::after {
+    content: ''; /* Keep content empty */
+    display: block; /* Keep display block */
+    width: 80px; /* Match underline width from index.css */
+    height: 3px; /* Match underline height from index.css */
+    /* Apply the gradient background from index.css */
+    background: linear-gradient(to right,
+      rgba(44, 62, 80, 0.8),
+      rgba(52, 152, 219, 1),
+      rgba(44, 62, 80, 0.8)
+    );
+    margin: 0 auto; /* Center the underline (bottom: 0 handles vertical position) */
+    border-radius: 3px; /* Match border-radius from index.css */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Match box-shadow from index.css */
+    position: absolute; /* Keep absolute positioning */
+    bottom: 0; /* Position at the bottom of the padding-bottom */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust for centering */
+}
+
+/* AICVPS specific styles */
+#aicvps-info {
+    /* background: linear-gradient(135deg, rgba(44, 62, 80, 0.1), rgba(52, 152, 219, 0.1)); */
+    padding: 4rem var(--container-padding);
+    text-align: center;
+}
+
+#aicvps-info h2 {
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+#aicvps-info p {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    max-width: 800px;
+    margin: 0 auto 3rem;
+}
+
+/* Cards for About and Mission/Vision */
+.aicvps-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--grid-gap);
+    margin-top: 2rem;
+}
+
+.aicvps-info-card {
+    background-color: var(--white);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow-color) 0px 4px 12px;
+    text-align: left;
+    position: relative; /* Needed for the blue patch */
+    overflow: hidden; /* Ensures blue patch stays within bounds */
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.aicvps-info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-color) 0px 8px 20px;
+}
+
+
+.aicvps-info-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Cover the top edge */
+    height: 10px; /* Height of the blue patch */
+    background-color: var(--secondary-color); /* Blue color */
+}
+
+.aicvps-info-card h3 {
+    color: var(--primary-color);
+    margin-top: 1rem; /* Space below the blue patch */
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.aicvps-info-card p {
+    color: var(--text-color);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1rem; /* Added bottom margin to separate paragraphs */
+}
+
+/* Style for the last paragraph in the card to avoid extra space */
+.aicvps-info-card p:last-child {
+    margin-bottom: 0;
+}
+
+/* Style for lists within the card */
+.aicvps-info-card ul {
+    margin-bottom: 1rem; /* Space after the list */
+    padding-left: 1.5rem; /* Indent list items */
+}
+
+/* Style for list items within the card */
+.aicvps-info-card li {
+    margin-bottom: 0.5rem; /* Space between list items */
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Style for the last list item to avoid extra space */
+.aicvps-info-card li:last-child {
+    margin-bottom: 0;
+}
+
+/* --- Course List Styling (from index.css) --- */
+
+.category-container {
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--white);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.category-container:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.category-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.category-header:hover {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+}
+
+.category-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.category-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+    background: var(--white);
+}
+
+.category-content.active {
+    max-height: 10000px; /* Sufficiently large value for expansion */
+    transition: max-height 1s ease-in-out;
+}
+
+.course-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.course-item {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    background: var(--white);
+}
+
+.course-item:last-child {
+    border-bottom: none;
+}
+
+.course-header {
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--white);
+    transition: background-color 0.3s ease;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.course-header:hover {
+    background: var(--light-bg);
+}
+
+.course-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
+    background: var(--light-bg);
+}
+
+.course-details.active {
+    max-height: 2000px; /* Sufficiently large value for expansion */
+    transition: max-height 0.5s ease-in-out;
+}
+
+.course-details-content {
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.course-image {
+    width: 100%;
+    height: 200px; /* Fixed height for consistency */
+    object-fit: cover; /* Maintain aspect ratio and cover container */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.course-image:hover {
+    transform: scale(1.02);
+}
+
+/* Ensure proper image container sizing */
+.course-details-content > div:first-child {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.course-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.course-info h4 {
+    margin: 0;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.course-info p {
+    margin: 0;
+    color: #666; /* Using a specific grey color from your index.css */
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.toggle-icon {
+    transition: transform 0.3s ease;
+}
+
+.course-item.active .toggle-icon,
+.category-header.active .icon {
+    transform: rotate(180deg);
+}
+
+.pdf-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.2rem;
+    background: var(--secondary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.pdf-button:hover {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* styles/aicvps.css - Add this block after existing styles */
+
+/* --- Course Finder Styling --- */
+
+.course-finder-section {
+    padding: 2rem var(--container-padding);
+    color: var(--white);
+    text-align: center;
+}
+
+.course-finder-section h2 {
+    color: var(--primary-color); /* Changed from var(--white) to primary color */
+    margin-bottom: 1.5rem;
+}
+
+.course-finder-form {
+    display: flex; /* Arrange items in a row */
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    gap: 1rem; /* Space between form groups and button */
+    justify-content: center; /* Center the form elements */
+    align-items: flex-start; /* Align items to the top */
+    max-width: 900px; /* Limit the width of the form */
+    margin: 0 auto; /* Center the form block */
+}
+
+.course-finder-form .form-group { /* Added .course-finder-form to increase specificity if needed */
+    flex-grow: 1; /* Allow form groups to grow */
+    position: relative; /* Needed for absolute positioning of suggestions and arrow */
+    min-width: 200px; /* Minimum width for form groups */
+    /* Adjusted layout for label above input */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align label and input to the left */
+}
+
+.course-finder-form label { /* Added .course-finder-form for specificity */
+    display: block; /* Ensure label is on its own line */
+    margin-bottom: 0.3rem; /* Space between label and input */
+    color: var(--primary-color); /* Changed from var(--white) to primary color */
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: left; /* Align label text to the left */
+}
+
+
+.form-control.course-select-input {
+    width: 100%;
+    padding: 0.8rem 2.5rem 0.8rem 1rem; /* Adjust padding for arrow */
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    color: var(--text-color);
+    background-color: var(--white);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    appearance: none; /* Remove default dropdown arrow */
+    -webkit-appearance: none;
+    cursor: pointer; /* Indicate it's interactive */
+}
+
+.form-control.course-select-input:focus {
+    border-color: var(--secondary-color);
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+/* Style for disabled inputs */
+.form-control.course-select-input:disabled {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}
+
+/* Style the placeholder text */
+.form-control.course-select-input::placeholder {
+  color: #888; /* Slightly darker grey color for placeholder */
+  opacity: 1; /* Ensure placeholder is visible */
+}
+.form-control.course-select-input:-ms-input-placeholder { /* For Internet Explorer */
+  color: #888;
+}
+.form-control.course-select-input::-ms-input-placeholder { /* For Microsoft Edge */
+  color: #888;
+}
+
+
+.select-arrow {
+    position: absolute;
+    top: calc(0.8rem + 0.3rem + 50% - 0.4rem); /* Adjust top to align with input field */
+    right: 1rem; /* Position inside the input */
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid var(--primary-color); /* Arrow color */
+    pointer-events: none; /* Allow clicks to pass through to input */
+}
+
+/* Adjust arrow position when label is present */
+.form-group label + .select-arrow {
+     top: calc(0.8rem + 0.3rem + 50% - 0.4rem); /* Re-calculate based on label height and margin */
+}
+
+
+/* Style for the suggestions list container */
+.suggestions-list {
+    position: absolute;
+    top: calc(100% + 0.3rem); /* Position below the form group, adding a small gap */
+    left: 0;
+    right: 0;
+    z-index: 10; /* Ensure it appears above other content */
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-top: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    max-height: 200px; /* Limit height and enable scrolling */
+    overflow-y: auto;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none; /* Hidden by default */
+}
+
+.suggestions-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.suggestions-list li {
+    padding: 0.8rem 1rem;
+    cursor: pointer;
+    color: var(--text-color);
+    border-bottom: 1px solid #eee;
+}
+
+.suggestions-list li:last-child {
+    border-bottom: none;
+}
+
+.suggestions-list li:hover {
+    background-color: var(--light-bg);
+}
+
+/* Style for the Go button */
+.btn.go-button {
+    background-color: #ffc107; /* Yellow color */
+    color: var(--primary-color); /* Dark text color */
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    /* Align button with inputs */
+     align-self: flex-end; /* Align to the bottom of the flex container */
+     margin-bottom: 0; /* Remove potential default button margin */
+}
+
+.btn.go-button:hover:not(:disabled) {
+    background-color: #ffda6a; /* Lighter yellow on hover */
+}
+
+.btn.go-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.course-type-cards {
+    padding: 4rem 0;
+}
+
+.course-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Auto-fit columns for larger screens */
+    gap: var(--grid-gap);
+    padding-top: var(--section-spacing-sm);
+    padding-bottom: var(--section-spacing-sm);
+    justify-content: center; /* Center grid items horizontally */
+    align-items: start; /* Align grid items to the start (top) of the cross axis */
+}
+
+.course-type-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    width: 280px;
+    height: 400px; /* This sets a fixed height for the entire card */
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    /* Add margin to the bottom for spacing */
+    margin-bottom: 2rem; /* You can adjust this value as needed */
+}
+
+.course-type-card:hover {
+    transform: scale(1.05); /* Simple scale up on hover */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.card-image {
+    height: 168px; /* Set a consistent height for ALL image containers */
+    overflow: hidden;
+    position: relative;
+}
+
+/* Remove specific height adjustments as they are no longer needed */
+/*
+.card-image.vocational-img {
+    height: 180px;
+}
+
+.card-image.paramedical-img {
+    height: 230px;
+}
+
+.card-image.ntt-img {
+    height: 190px;
+}
+*/
+
+.card-image img {
+    width: 100%;
+    height: 100%; /* Image will fill the container's height (168px) */
+    object-fit: cover; /* Ensures the image covers the container while maintaining aspect ratio */
+    transition: transform 0.3s ease;
+}
+
+/* Keep specific image positioning to fine-tune vertical alignment within the 168px height */
+.card-image.vocational-img img {
+    object-position: center 35%; /* Adjusted position to show key elements */
+}
+
+.card-image.paramedical-img img {
+    object-position: center 40%; /* Adjusted position to show key elements */
+}
+
+.card-image.ntt-img img {
+    object-position: center 45%; /* Adjusted position to show key elements */
+}
+
+.course-type-card:hover .card-image img {
+    transform: scale(1.05);
+}
+
+.card-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to bottom, #fff, #f8f9fa);
+}
+
+.card-content h3 {
+    margin: 0 0 0.5rem;
+    color: #333;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.card-content p {
+    color: #666;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+.preview-btn {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.85rem;
+}
+
+.preview-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(37, 99, 235, 0.2);
+}
+
+/* Add a subtle border to the cards */
+.course-type-card {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Add a subtle inner shadow to the card content */
+.card-content {
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .course-cards-grid {
+        gap: 1.5rem;
+        /* Add flexbox centering for small screens */
+        display: flex;
+        flex-direction: column; /* Stack cards vertically */
+        align-items: center; /* Center cards horizontally */
+    }
+
+    .course-type-card {
+        width: 250px;
+        height: 380px;
+    }
+}
+
+@media (max-width: 480px) {
+    .course-cards-grid {
+        gap: 1rem;
+        /* Ensure flexbox centering is also applied here */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .course-type-card {
+        width: 220px;
+        height: 360px;
+    }
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    /* Ensure this is a positioning context for the absolute close button */
+    position: fixed; /* Or absolute, depending on its container */
+}
+
+.modal-content {
+    position: relative;
+    width: 90%;
+    height: 90%;
+    margin: 2% auto;
+    background: white; /* You can keep or remove this; with padding: 0 it won't be visible around the iframe */
+    border-radius: 12px;
+    /* Change padding from 20px to 0 */
+    padding: 0;
+    /* Add z-index to modal content if close button disappears behind it */
+    z-index: 1;
+}
+
+.close-modal {
+    position: absolute; /* Position relative to the .modal */
+    right: 20px; /* Adjust spacing from the right edge */
+    top: 10px; /* Adjust spacing from the top edge */
+    font-size: 28px;
+    font-weight: bold;
+    color: #fff; /* White color for visibility against dark overlay */
+    cursor: pointer;
+    z-index: 1001; /* Ensure it's above the modal and iframe */
+    background-color: rgba(0, 0, 0, 0.5); /* Subtle dark background */
+    border-radius: 50%; /* Make it round */
+    width: 30px; /* Set a fixed size */
+    height: 30px;
+    display: flex; /* Use flexbox to center the 'x' */
+    justify-content: center;
+    align-items: center;
+    line-height: 1; /* Help with vertical centering */
+    padding-bottom: 2px; /* Fine-tune vertical alignment if needed */
+}
+
+.close-modal:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+}
+
+#pdf-viewer {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Responsive adjustments for the form layout */
+@media (max-width: 768px) {
+    .course-finder-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .form-group {
+        min-width: 100%; /* Full width on smaller screens */
+    }
+     .btn.go-button {
+         align-self: stretch; /* Make button full width on small screens */
+     }
+      .select-arrow {
+          top: calc(0.8rem + 0.3rem + 50% - 0.4rem); /* Re-calculate based on label height and input padding */
+      }
+       .form-group label + .select-arrow {
+           top: calc(0.8rem + 0.3rem + 50% - 0.4rem);
+       }
+}
+
+/* Responsive adjustments for course details */
+@media (max-width: 1200px) {
+    .course-details-content {
+      gap: 1.5rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .category-header h3 {
+      font-size: 1.1rem;
+    }
+
+    .course-details-content {
+      grid-template-columns: 1fr;
+    }
+
+    .course-image {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .category-container {
+      margin-bottom: 1rem;
+    }
+
+    .category-header,\
+    .course-header {
+      padding: 0.8rem 1.2rem;
+    }
+
+    .course-details-content {
+      padding: 1.2rem;
+    }
+
+    .course-info h4 {
+      font-size: 1.1rem;
+    }
+
+    .pdf-button {
+      width: 100%;
+      justify-content: center;
+    }
+}
+
+/* Additional responsive styles based on common breakpoints */
+@media (max-width: 576px) {
+    .course-details-content {
+        padding: 1rem;
+    }
+    .course-image {
+        height: 180px; /* Adjust height for smaller screens */
+    }
+    .course-info h4 {
+        font-size: 1rem;
+    }
+    .course-info p {
+        font-size: 0.9rem;
+    }
+    .pdf-button {
+        font-size: 0.85rem;
+        padding: 0.6rem 1rem;
+    }
+}
+
+/* Accessibility and Hover styles from index.css */
+@media (hover: none) {
+  /* Styles for touch devices */
+  .category-header:active,
+  .course-header:active {
+    background-color: var(--light-bg); /* Or a suitable active state color */
+  }
+   .pdf-button:active {
+    transform: translateY(0);
+    box-shadow: none;
+   }
+}
+
+/* High-resolution screen adjustments */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* Adjustments for images on retina displays if needed */
+    .course-image {
+        /* Example: use higher resolution images or adjust rendering */
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Print styles */
+@media print {
+  .category-container,
+  .course-item,
+  .course-details {
+    overflow: visible !important; /* Ensure all content is visible for printing */
+    max-height: none !important;
+  }
+  .category-header .icon,
+  .course-header .toggle-icon,
+  .pdf-button {
+    display: none !important; /* Hide icons and buttons in print */
+  }
+}
+
+/* Loader styles (Attempt to match orbiting circles based on provided CSS) */
+.loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--white); /* Using your site's background color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 1s ease-out;
+}
+
+.loader-wrapper.fade-out {
+  opacity: 0;
+  pointer-events: none; /* Prevents interaction with elements behind the loader */
+}
+
+.loader {
+  width: 80px; /* Size of the main container */
+  height: 80px;
+  position: relative;
+  animation: loader-scale 2.5s ease-in-out infinite; /* Animation for the larger circle */
+}
+
+.loader:before,
+.loader:after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  /* Both elements are assigned loader-bounce animation */
+  animation: loader-bounce 2.5s ease-in-out infinite;
+}
+
+.loader:before {
+  width: 100%; /* Size of the large dark circle */
+  height: 100%;
+  background: var(--primary-color); /* Using your primary color */
+  /* animation: loader-bounce 2.5s ease-in-out infinite; is also applied here */
+  animation-delay: -0.5s; /* Offset the animation start for the larger circle */
+}
+
+.loader:after {
+  width: 50%; /* Size of the small blue circle */
+  height: 50%;
+  background: var(--secondary-color); /* Using your secondary color */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the smaller circle within the loader container */
+  /* animation: loader-bounce 2.5s ease-in-out infinite; is also applied here */
+  animation-delay: 0s; /* Animation delay for the smaller circle */
+}
+
+/* Keyframe animations from career-services.css */
+@keyframes loader-scale {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15); /* Slightly larger scale at 50% */
+  }
+}
+
+@keyframes loader-bounce {
+  0%, 100% {
+    transform: scale(0); /* Starts and ends invisible */
+  }
+  50% {
+    transform: scale(1); /* Becomes fully visible at 50% */
+  }
+}

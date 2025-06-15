@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!-- Load site configuration -->
+  <script src="config.js"></script>
+  <script>
+    // Function to update meta tags using config
+    function updateMetaTags() {
+      const config = window.siteConfig;
+      const pageName = "Events & Activities";
+      
+      // Update title and meta tags
+      document.title = `${pageName} | ${config.orgName} B.Voc Programs`;
+      document.querySelector('meta[name="title"]').content = `${pageName} | ${config.orgName} B.Voc Programs`;
+      document.querySelector('meta[name="description"]').content = `Discover upcoming events, workshops, seminars, and activities at ${config.orgName}. Stay informed about industry visits, guest lectures, and student activities.`;
+      document.querySelector('meta[name="keywords"]').content = `${config.orgName} events, B.Voc activities, workshops, seminars, industry visits, student events`;
+      
+      // Update Open Graph tags
+      document.querySelector('meta[property="og:url"]').content = `${config.websiteUrl}/events.html`;
+      document.querySelector('meta[property="og:title"]').content = `${pageName} | ${config.orgName}`;
+      document.querySelector('meta[property="og:description"]').content = `Discover upcoming events, workshops, and activities at ${config.orgName}'s B.Voc programs.`;
+      document.querySelector('meta[property="og:image"]').content = `${config.websiteUrl}${config.logoPath}`;
+      
+      // Update Twitter Card tags
+      document.querySelector('meta[property="twitter:url"]').content = `${config.websiteUrl}/events.html`;
+      document.querySelector('meta[property="twitter:title"]').content = `${pageName} | ${config.orgName}`;
+      document.querySelector('meta[property="twitter:description"]').content = `Discover upcoming events, workshops, and activities at ${config.orgName}'s B.Voc programs.`;
+      document.querySelector('meta[property="twitter:image"]').content = `${config.websiteUrl}${config.logoPath}`;
+      
+      // Update theme color
+      document.querySelector('meta[name="theme-color"]').content = config.seo.themeColor;
+      document.querySelector('meta[name="msapplication-TileColor"]').content = config.seo.themeColor;
+      
+      // Update Schema.org data
+      const schemaScript = document.querySelector('script[type="application/ld+json"]');
+      const schemaData = JSON.parse(schemaScript.textContent);
+      schemaData.name = `${config.orgName} Events & Activities`;
+      schemaData.description = `Calendar of events and activities at ${config.orgName}'s B.Voc programs`;
+      schemaData.publisher.name = config.orgFullName;
+      schemaData.publisher.url = config.websiteUrl;
+      schemaData.isPartOf.name = `${config.orgName} B.Voc Programs`;
+      schemaData.isPartOf.url = config.websiteUrl;
+      schemaScript.textContent = JSON.stringify(schemaData, null, 2);
+    }
+    
+    // Update meta tags when the page loads
+    document.addEventListener('DOMContentLoaded', updateMetaTags);
+  </script>
+  
+  <!-- Primary Meta Tags -->
+  <title>Loading...</title>
+  <meta name="title" content="Loading...">
+  <meta name="description" content="Loading...">
+  <meta name="keywords" content="Loading...">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="">
+  <meta property="og:title" content="Loading...">
+  <meta property="og:description" content="Loading...">
+  <meta property="og:image" content="">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="">
+  <meta property="twitter:title" content="Loading...">
+  <meta property="twitter:description" content="Loading...">
+  <meta property="twitter:image" content="">
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/favicon/site.webmanifest">
+  <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#2563eb">
+  
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  
+  <!-- Fonts and Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="styles/events.css">
+
+  <!-- Schema.org markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Loading...",
+    "description": "Loading...",
+    "publisher": {
+      "@type": "EducationalOrganization",
+      "name": "Loading...",
+      "url": ""
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Educational Events"
+    },
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Loading...",
+      "url": ""
+    }
+  }
+  </script>
+  <style>
+
+  </style>
+</head>
+<body>
+  <!-- Add loader at the start of body -->
+  <div class="loader-wrapper">
+    <div class="loader"></div>
+  </div>
+  <header>
+    <h1>Events & Activities</h1>
+    <p>Stay updated with the latest happenings at B.Voc</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="#upcoming">Upcoming Events</a>
+    <a href="#calendar">Event Calendar</a>
+    <a href="#past">Past Events</a>
+  </nav>
+
+  <div class="container">
+    <section class="section" id="upcoming">
+      <h2>Upcoming Events</h2>
+      <div class="filter-buttons">
+        <button class="filter-button active">All</button>
+        <button class="filter-button">Academic</button>
+        <button class="filter-button">Cultural</button>
+        <button class="filter-button">Technical</button>
+        <button class="filter-button">Sports</button>
+      </div>
+      <div class="event-grid">
+        <div class="event-card">
+          <img src="IMG/Glocal.webp" alt="Tech Symposium" class="event-image">
+          <div class="event-content">
+            <div class="event-date">Dec 15, 2024</div>
+            <h3 class="event-title">Annual Tech Symposium</h3>
+            <p class="event-description">Join us for a day of technology talks, workshops, and networking opportunities.</p>
+            <a href="#" class="register-button">Register Now</a>
+          </div>
+        </div>
+        <div class="event-card">
+          <img src="IMG/Glocal.webp" alt="Cultural Fest" class="event-image">
+          <div class="event-content">
+            <div class="event-date">Dec 20, 2024</div>
+            <h3 class="event-title">Cultural Festival</h3>
+            <p class="event-description">Experience the diversity of talents in our annual cultural celebration.</p>
+            <a href="#" class="register-button">Register Now</a>
+          </div>
+        </div>
+        <div class="event-card">
+          <img src="IMG/Glocal.webp" alt="Sports Meet" class="event-image">
+          <div class="event-content">
+            <div class="event-date">Jan 5, 2025</div>
+            <h3 class="event-title">Annual Sports Meet</h3>
+            <p class="event-description">Compete in various sports events and show your athletic prowess.</p>
+            <a href="#" class="register-button">Register Now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="calendar">
+      <h2>Event Calendar</h2>
+      <div class="calendar">
+        <div class="month">
+          <h3>December 2024</h3>
+          <ul class="event-list">
+            <li class="event-list-item">
+              <span class="event-list-date">Dec 15</span>
+              <div class="event-list-content">
+                <h4>Annual Tech Symposium</h4>
+                <p>Main Auditorium, 9:00 AM</p>
+              </div>
+            </li>
+            <li class="event-list-item">
+              <span class="event-list-date">Dec 20</span>
+              <div class="event-list-content">
+                <h4>Cultural Festival</h4>
+                <p>Campus Ground, 5:00 PM</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="month">
+          <h3>January 2025</h3>
+          <ul class="event-list">
+            <li class="event-list-item">
+              <span class="event-list-date">Jan 5</span>
+              <div class="event-list-content">
+                <h4>Annual Sports Meet</h4>
+                <p>Sports Complex, 8:00 AM</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="past">
+      <h2>Past Events</h2>
+      <div class="event-grid">
+        <div class="event-card">
+          <img src="IMG/Glocal.webp" alt="Workshop" class="event-image">
+          <div class="event-content">
+            <div class="event-date">Nov 25, 2024</div>
+            <h3 class="event-title">Industry Workshop</h3>
+            <p class="event-description">Expert talks on emerging technologies and industry trends.</p>
+          </div>
+        </div>
+        <div class="event-card">
+          <img src="IMG/Glocal.webp" alt="Hackathon" class="event-image">
+          <div class="event-content">
+            <div class="event-date">Nov 10, 2024</div>
+            <h3 class="event-title">24-Hour Hackathon</h3>
+            <p class="event-description">Students developed innovative solutions to real-world problems.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Loader Animation
+      const loaderWrapper = document.querySelector('.loader-wrapper');
+      setTimeout(() => {
+        loaderWrapper.classList.add('fade-out');
+        setTimeout(() => {
+          loaderWrapper.style.display = 'none';
+        }, 1000);
+      }, 2500);
+
+      // Animation observer
+      const animateElements = document.querySelectorAll('.section, .event-card, .calendar-item, .upcoming-event, .event-details');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Add small delay before starting animation
+            setTimeout(() => {
+              entry.target.classList.add('visible');
+            }, 100);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.2,
+        rootMargin: '50px'
+      });
+
+      // Observe all animated elements
+      animateElements.forEach(element => {
+        observer.observe(element);
+      });
+
+      // Set animation order for staggered elements
+      ['event-card', 'calendar-item', 'upcoming-event'].forEach(className => {
+        document.querySelectorAll('.' + className).forEach((item, index) => {
+          item.style.setProperty('--animation-order', index + 1);
+        });
+      });
+
+      // Add gradient text effect to headings
+      document.querySelectorAll('h1, h2').forEach(heading => {
+        heading.classList.add('gradient-text');
+      });
+
+      // Filter button click handler
+      document.querySelectorAll('.filter-button').forEach(button => {
+        button.addEventListener('click', function() {
+          // Remove active class from all buttons
+          document.querySelectorAll('.filter-button').forEach(btn => {
+            btn.classList.remove('active');
+          });
+          
+          // Add active class to clicked button
+          this.classList.add('active');
+          
+          // Add animation to filtered cards
+          document.querySelectorAll('.event-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            
+            setTimeout(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            }, 300);
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html> 
